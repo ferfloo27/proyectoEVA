@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clases</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+            grid-gap: 20px; /* Espacio entre las tarjetas */
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .card-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .card-button {
+            display: inline-block;
+            background-color: #1865f2;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .card-button:hover {
+            background-color: #0c4ca6;
+        }
+        .img-home{
+            width: 10vw !important;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <img src="logo.png" alt="Clase 1" class="img-home">
+        <div class="card-content">
+            <h2 class="card-title">Título de la Clase 1</h2>
+            <p class="card-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="#" class="card-button">Ver Clase</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="logo.png" alt="Clase 2" class="img-home">
+        <div class="card-content">
+            <h2 class="card-title">Título de la Clase 2</h2>
+            <p class="card-description">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <a href="#" class="card-button">Ver Clase</a>
+        </div>
+    </div>
+    
+    
+</div>
+
+</body>
+</html>
