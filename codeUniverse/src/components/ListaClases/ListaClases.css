@@ -1,0 +1,13 @@
+.class-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .class-list li {
+    margin: 15px 0;
+  }
+
+  .titulo-det-course{
+    font-size: 25px;
+    color: #000;
+  }

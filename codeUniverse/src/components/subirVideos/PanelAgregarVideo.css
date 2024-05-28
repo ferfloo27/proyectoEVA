@@ -1,0 +1,20 @@
+.contenedor-form-upload-video{
+    width: 100vw;
+    height: 89.6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.form-upload-video{
+height: 70vh;
+padding: 25px;
+display: flex;
+flex-direction: column;
+gap: 5px ;
+}
+
+.video{
+    background-color: chartreuse;
+}

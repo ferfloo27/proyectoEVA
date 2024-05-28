@@ -1,0 +1,10 @@
+.contenido{
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 5em 13em;   
+    min-height: 88.2vh;
+}
+

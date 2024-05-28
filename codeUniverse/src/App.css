@@ -1,0 +1,12 @@
+:root{
+  --color-uno: #1865f2;
+  --color-dos: #373d48;
+  --color-background-tarjeta: #dde9ff;
+  --color-border: #d1d7dc; 
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', 'Noto Sans', 'Helvetica', 'Corbel', sans-serif, 'Helvetica', 'Corbel', sans-serif;
+}
