@@ -1,0 +1,8 @@
+GET 'http://localhost/ejemploBDeva/login.php'
+Content-Type: application/json
+
+{
+  "nombreusuario":"midudev",
+  "contrasena" : "1234qwer"
+
+}

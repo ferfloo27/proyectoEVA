@@ -9,23 +9,34 @@ export const LoginForm = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    const success = login({ username, password });
+  const handleLogin =  (e) => {
+    e.preventDefault();
+    const success = login({ username,password });
     if (success) {
       console.log('Inicio de sesión exitoso!');
-      navigate('/panel')
+      navigate('/panel');
     } else {
       console.log('Nombre de usuario o contraseña incorrectos.');
     }
   };
 
+  // const handleLogin = () => {
+  //   const success = login({ username, password });
+  //   if (success) {
+  //     console.log('Inicio de sesión exitoso!');
+  //     navigate('/panel')
+  //   } else {
+  //     console.log('Nombre de usuario o contraseña incorrectos.');
+  //   }
+  // };
+
   return (
     <div className='loginContainer'>
-      <form className="form-login" >
+      <form className="form-login" onSubmit={handleLogin}>
         <img src={logo} alt="Imagen de bienvenida" className="login-logo" />
         <h1>Iniciar Sesión</h1>
 
-        <label className='label-form' htmlFor="email">Correo Electrónico:</label>
+        <label className='label-form' htmlFor="email">Nombre de Usuario:</label>
         <input
           className='input input-username'
           type="username"
@@ -43,7 +54,7 @@ export const LoginForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className='btn-login' onClick={handleLogin}>Iniciar Sesión</button>
+        <button className='btn-login'>Iniciar Sesión</button>
         <div className="login-buttons">
           <button className="btn-red" >
             <div className='icono'>

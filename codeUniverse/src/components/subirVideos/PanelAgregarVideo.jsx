@@ -1,20 +1,16 @@
 import { Header } from "../header/Header";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth } from "../../hooks/AuthProvider/AuthProvider";
 import axios from 'axios'
 import './PanelAgregarVideo.css'
 
 export function PanelAgregarVideo() {
-  const [video, setVideo] = useState(null);
+  
   const [file, setFile] = useState(null);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
-  useEffect(() => {
-    axios.get('http://localhost/ejemploBDeva/fetch_video.php?id=4')
-      .then(response => setVideo(response.data))
-      .catch(error => console.error('Error fetching video:', error));
-  }, []);
+
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -56,19 +52,7 @@ export function PanelAgregarVideo() {
           <button type="submit">Subir archivo</button>
         </form>
 
-        {video && (
-          <div className="video">
-            <h1>{video.nombre}</h1>
-            <p>{video.descripcion}</p>
-            <video width="450" controls>
-              <source src={`http://localhost/ejemploBDeva/${video.url}`}  type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p>
-              {video.url}
-            </p>
-          </div>
-        )}
+        
       </div>
     </>
   )

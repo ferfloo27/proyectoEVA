@@ -1,23 +1,24 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
 include 'config.php';
 
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
+$consulta = "SELECT * FROM videos";
+$resultados = mysqli_query($conexion, $consulta);
 
-$id = $_GET['id'];
-$consulta = "SELECT * FROM videos WHERE id=?";
-$stmt = $conexion->prepare($consulta);
-$stmt->bind_param("i", $id);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows === 0) {
-    http_response_code(404);
-    echo json_encode(["message" => "No se encontraron resultados."]);
+if (!$resultados) {
+    http_response_code(500);
+    echo json_encode(["message" => "Error al realizar la consulta: " . mysqli_error($conexion)]);
 } else {
-    $video = $result->fetch_assoc();
-    echo json_encode($video);
+    $videos = [];
+    while ($fila = mysqli_fetch_assoc($resultados)) {
+        $videos[] = $fila;
+    }
+    echo json_encode($videos);
 }
 
-$stmt->close();
 mysqli_close($conexion);
+?>
+

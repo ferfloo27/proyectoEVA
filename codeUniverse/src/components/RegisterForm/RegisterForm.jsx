@@ -2,6 +2,8 @@ import { useState } from 'react'
 import logo from '../../assets/logo.png'
 import { useAuth } from '../../hooks/AuthProvider/AuthProvider';
 import './RegisterForm.css'
+
+
 export const RegisterForm = () => {
 
   const [name, setName] = useState('');
@@ -11,10 +13,10 @@ export const RegisterForm = () => {
   const [role, setRole] = useState('estudiante');
   const { register } = useAuth();
 
-  const handleRegister = () => {
+  const handleRegister = async (e) => {
+    e.preventDefault();
     const newUser = { name, username, email, password, role };
-    const success = register(newUser);
-    console.log('datos:', name, username, email, password)
+    const success = await register(newUser);
     if (success) {
       alert('Registro exitoso!');
     } else {
@@ -22,9 +24,20 @@ export const RegisterForm = () => {
     }
   };
 
+  // const handleRegister = () => {
+  //   const newUser = { name, username, email, password, role };
+  //   const success = register(newUser);
+  //   console.log('datos:', name, username, email, password)
+  //   if (success) {
+  //     alert('Registro exitoso!');
+  //   } else {
+  //     alert('El nombre de usuario o correo electrónico ya están en uso.');
+  //   }
+  // };
+
   return (
     <div className='loginContainer'>
-      <form className="form-login" >
+      <form className="form-login" onSubmit={handleRegister} >
         <img src={logo} alt="Imagen de bienvenida" className="login-logo-register" />
         <h1>Regístrate</h1>
 
@@ -73,7 +86,7 @@ export const RegisterForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className='btn-login' onClick={handleRegister}>Registrarse</button>
+        <button className='btn-login' >Registrarse</button>
         <div className="login-buttons">
           <button className="btn-red" >
             <div className='icono'>
