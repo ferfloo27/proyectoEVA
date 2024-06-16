@@ -1,28 +1,46 @@
 import './Tarjeta.css'
-import logo from '../../assets/tarjeta-fondo.jpg'
 import { useState } from 'react';
-import { IconCirclePlusFilled } from '@tabler/icons-react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/AuthProvider/AuthProvider';
 
 
-export function Tarjeta() {
+export function Tarjeta({ idVideo, nombreClase, descripcion, urlVideo,inscrito }) {
+  const navigate = useNavigate();
+  const {inscribirCurso} =useAuth();
 
+  const handleVerClase = () => {
+    navigate('/detalle-curso', { state: { nombreClase, descripcion, urlVideo } });
+  };
+
+  const handleInscribirme = () => {
+    inscribirCurso(idVideo);
+  
+  };
+  
   
   return (
-    <div className='main-docente'>
-      <div className="contenido-tarjeta">
-        <div className="tarjeta">
-          <img src={logo} alt="imagen-predeterminada" className="img-tarjeta" />
-          <div className="tarjeta-contenido">
-            <h1 className="tarjeta-titulo">Introducción a la Programacion</h1>
-            <p className="tarjeta-descripcion"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-            <a href="/detalle-curso" className="tarjeta-btn">Ver Clase</a>
-          </div>
-        </div>
-
-      </div>
-      
-     
+    <div className="contenido-tarjeta">
+    {/* {thumbnail ? (
+  <img className='img-tarjeta' src={thumbnail} alt="Video Thumbnail" />
+) : (
+  <video className='img-tarjeta' ref={videoRef} src={videoSrc} style={{ display: 'none' }} />
+)} */}
+    <div className="tarjeta-video">
+    <video className='img-tarjeta' width="450" controls>
+      <source src={`http://localhost/ejemploBDeva/${urlVideo}`} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    {/* <img src={logo} alt="imagen-predeterminada" className="img-tarjeta" /> */}
     </div>
+    <div className="tarjeta-datos">
+      <h1 className="tarjeta-titulo">{nombreClase}</h1>
+      <p className="tarjeta-descripcion"> {descripcion}</p>
+      <div className="btns-tarjeta">
+      <a href="/detalle-curso" onClick={handleVerClase} className="tarjeta-btn">Ver Clase</a>
+      {!inscrito && <a onClick={handleInscribirme} className="tarjeta-btn">Inscribirme</a> }
+     
+      </div>
+    </div>
+</div>
   )
 }

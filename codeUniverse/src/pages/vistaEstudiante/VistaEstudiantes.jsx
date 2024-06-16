@@ -1,10 +1,10 @@
 import { ListaCursos } from "../../components/listaCursos/ListaCursos";
 import { Header } from "../../components/header/Header";
 
-export function VistaEstudiantes({role}) {
+export function VistaEstudiantes() {
     return (
         <>
-            <Header role={role} />
+            <Header />
             <ListaCursos />
         </>
     )

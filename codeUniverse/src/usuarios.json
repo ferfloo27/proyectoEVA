@@ -1,0 +1,112 @@
+[
+  {
+      "id": 1,
+      "nombre": "Ana Gómez",
+      "correoelec": "ana.gomez@example.com",
+      "nombreusuario": "ana_gomez",
+      "contrasena": "pass123",
+      "rol": "maestro",
+      "videosSubidos": [1,3],
+      "videosInscritos": [5,9]
+  },
+  {
+      "id": 2,
+      "nombre": "Carlos Pérez",
+      "correoelec": "carlos.perez@example.com",
+      "nombreusuario": "carlosp",
+      "contrasena": "securepass",
+      "rol": "estudiante",
+      "videosSubidos": [],
+      "videosInscritos": [6,8]
+  },
+  {
+      "id": 3,
+      "nombre": "Laura Torres",
+      "correoelec": "laura.torres@example.com",
+      "nombreusuario": "laura_t",
+      "contrasena": "mypassword",
+      "rol": "maestro",
+      "videosSubidos": [2],
+      "videosInscritos": []
+  },
+  {
+      "id": 4,
+      "nombre": "Miguel Sánchez",
+      "correoelec": "miguel.sanchez@example.com",
+      "nombreusuario": "miguels",
+      "contrasena": "mig1234",
+      "rol": "estudiante",
+      "videosSubidos": [],
+      "videosInscritos": []
+  },
+  {
+      "id": 5,
+      "nombre": "Elena Ríos",
+      "correoelec": "elena.rios@example.com",
+      "nombreusuario": "elenar",
+      "contrasena": "elena_pass",
+      "rol": "maestro",
+      "videosSubidos": [4,5],
+      "videosInscritos": []
+  },
+  {
+      "id": 6,
+      "nombre": "Roberto Martínez",
+      "correoelec": "roberto.martinez@example.com",
+      "nombreusuario": "robmart",
+      "contrasena": "robertosafe",
+      "rol": "estudiante",
+      "videosSubidos": [],
+      "videosInscritos": []
+  },
+  {
+      "id": 7,
+      "nombre": "Lucía Fernández",
+      "correoelec": "lucia.fernandez@example.com",
+      "nombreusuario": "lucia_f",
+      "contrasena": "lucia_321",
+      "rol": "maestro",
+      "videosSubidos": [6,9,7],
+      "videosInscritos": []
+  },
+  {
+      "id": 8,
+      "nombre": "Pedro García",
+      "correoelec": "pedro.garcia@example.com",
+      "nombreusuario": "pedrog",
+      "contrasena": "pedro567",
+      "rol": "estudiante",
+      "videosSubidos": [],
+      "videosInscritos": []
+  },
+  {
+      "id": 9,
+      "nombre": "Sofía Ramírez",
+      "correoelec": "sofia.ramirez@example.com",
+      "nombreusuario": "sofia_r",
+      "contrasena": "sofia2023",
+      "rol": "maestro",
+      "videosSubidos": [8,10],
+      "videosInscritos": []
+  },
+  {
+      "id": 10,
+      "nombre": "Javier Hernández",
+      "correoelec": "javier.hernandez@example.com",
+      "nombreusuario": "javierh",
+      "contrasena": "javi_secure",
+      "rol": "estudiante",
+      "videosSubidos": [],
+      "videosInscritos": []
+  },
+  {
+    "id": 11,
+    "nombre": "Miguel Angel",
+    "correoelec": "midu.angel@example.com",
+    "nombreusuario": "midudev",
+    "contrasena": "1234qwer",
+    "rol": "maestro",
+    "videosSubidos": [],
+    "videosInscritos": []
+}
+]

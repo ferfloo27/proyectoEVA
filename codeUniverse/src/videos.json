@@ -1,0 +1,92 @@
+[
+  {
+      "idVideo": 1,
+      "usuario_idusuario": 1,
+      "titulovideo": "Introducción a la Física",
+      "descripcion": "Un curso básico sobre los fundamentos de la física.",
+      "size": "200MB",
+      "tipo": "mp4",
+      "url": "https://example.com/videos/introduccion-fisica.mp4"
+  },
+  {
+      "idVideo": 2,
+      "usuario_idusuario": 2,
+      "titulovideo": "Matemáticas Avanzadas",
+      "descripcion": "Exploración de temas avanzados en matemáticas.",
+      "size": "350MB",
+      "tipo": "mp4",
+      "url": "https://example.com/videos/matematicas-avanzadas.mp4"
+  },
+  {
+      "idVideo": 3,
+      "usuario_idusuario": 3,
+      "titulovideo": "Historia del Arte",
+      "descripcion": "Un recorrido por la historia del arte desde la antigüedad hasta el presente.",
+      "size": "150MB",
+      "tipo": "mp4",
+      "url": "https://example.com/videos/historia-arte.mp4"
+  },
+  {
+      "idVideo": 4,
+      "usuario_idusuario": 4,
+      "titulovideo": "Programación en Python",
+      "descripcion": "Tutorial completo de programación en Python para principiantes.",
+      "size": "500MB",
+      "tipo": "mp4",
+      "url": "https://example.com/videos/programacion-python.mp4"
+  },
+  {
+      "idVideo": 5,
+      "usuario_idusuario": 5,
+      "titulovideo": "Biología Molecular",
+      "descripcion": "Estudio detallado de los procesos biológicos a nivel molecular.",
+      "size": "400MB",
+      "tipo": "mp4",
+      "url": "https://example.com/videos/biologia-molecular.mp4"
+  },
+  {
+      "idVideo": 6,
+      "usuario_idusuario": 6,
+      "titulovideo": "Filosofía Contemporánea",
+      "descripcion": "Análisis de las corrientes filosóficas contemporáneas.",
+      "size": "320MB",
+      "tipo": "mp4",
+      "url": "https://example.com/videos/filosofia-contemporanea.mp4"
+  },
+  {
+      "idVideo": 7,
+      "usuario_idusuario": 7,
+      "titulovideo": "Ingeniería de Software",
+      "descripcion": "Principios y prácticas de la ingeniería de software moderna.",
+      "size": "250MB",
+      "tipo": "mp4",
+      "url": "https://example.com/videos/ingenieria-software.mp4"
+  },
+  {
+      "idVideo": 8,
+      "usuario_idusuario": 8,
+      "titulovideo": "Química Orgánica",
+      "descripcion": "Curso introductorio sobre los principios de la química orgánica.",
+      "size": "290MB",
+      "tipo": "mp4",
+      "url": "https://example.com/videos/quimica-organica.mp4"
+  },
+  {
+      "idVideo": 9,
+      "usuario_idusuario": 9,
+      "titulovideo": "Literatura Inglesa",
+      "descripcion": "Estudio de las obras clásicas de la literatura inglesa.",
+      "size": "370MB",
+      "tipo": "mp4",
+      "url": "https://example.com/videos/literatura-inglesa.mp4"
+  },
+  {
+      "idVideo": 10,
+      "usuario_idusuario": 10,
+      "titulovideo": "Economía Internacional",
+      "descripcion": "Análisis de la economía global y las relaciones internacionales.",
+      "size": "430MB",
+      "tipo": "mp4",
+      "url": "https://example.com/videos/economia-internacional.mp4"
+  }
+]

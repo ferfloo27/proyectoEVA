@@ -4,20 +4,24 @@ import { VistaEstudiantes } from '../vistaEstudiante/VistaEstudiantes'
 
 export const Panel = () => {
     const { user } = useAuth();
+    const userLocal = JSON.parse(localStorage.getItem('user'))
+    
 
     const changeUser = () => {
-        if(user.role === 'maestro'){
-            return <VistaMaestro role={user.role} />
+        if(userLocal.rol === 'maestro'){
+            console.log('sepudo')
+            console.log('lcalstorage ',userLocal.rol)
+            return <VistaMaestro  />
         } else {
-            if( user.role === 'estudiante'){
-                return <VistaEstudiantes role={user.role} />
+            if( userLocal.rol === 'estudiante'){
+                return <VistaEstudiantes  />
             }
         }
     }
 
     return (
         <>
-            {user ? (
+            {userLocal ? (
                 changeUser()
             ) : (
             <p>no se encontro el usuario</p>

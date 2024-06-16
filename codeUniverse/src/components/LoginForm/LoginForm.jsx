@@ -3,36 +3,39 @@ import { useState } from 'react';
 import { useAuth } from '../../hooks/AuthProvider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
+
 export const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin =  (e) => {
-    e.preventDefault();
-    const success = login({ username,password });
-    if (success) {
-      console.log('Inicio de sesión exitoso!');
-      navigate('/panel');
-    } else {
-      console.log('Nombre de usuario o contraseña incorrectos.');
-    }
-  };
-
-  // const handleLogin = () => {
-  //   const success = login({ username, password });
+  // const handleLogin =  (e) => {
+  //   e.preventDefault();
+  //   const success = login({ username,password });
   //   if (success) {
   //     console.log('Inicio de sesión exitoso!');
-  //     navigate('/panel')
+  //     navigate('/panel');
   //   } else {
   //     console.log('Nombre de usuario o contraseña incorrectos.');
   //   }
   // };
 
+  const handleLogin = () => {
+    const success = login({ username, password });
+    if (success) {
+      console.log('Inicio de sesión exitoso!');
+      navigate('/panel')
+    } else {
+      console.log('Nombre de usuario o contraseña incorrectos.');
+    }
+  };
+
+ 
+
   return (
     <div className='loginContainer'>
-      <form className="form-login" onSubmit={handleLogin}>
+      <form className="form-login"  onSubmit={handleLogin} >
         <img src={logo} alt="Imagen de bienvenida" className="login-logo" />
         <h1>Iniciar Sesión</h1>
 

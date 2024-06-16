@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/AuthProvider/AuthProvider'
 import { useState } from 'react';
 
-export function Header({role}) {
+export function Header() {
 
-  const { user, logout } = useAuth();
+  const {  logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const user = JSON.parse(localStorage.getItem('user'))
 
   const handleMouseEnter = () => {
     setIsMenuOpen(true);
@@ -32,27 +33,27 @@ export function Header({role}) {
             <img
               className='avatar-user'
               alt='avatar'
-              src={`https://unavatar.io/${user.username}`}
+              src={`https://unavatar.io/${user.nombreusuario}`}
             />
-            <span className='name-user'>{user.username}</span>
+            <span className='name-user'>{user.nombreusuario}</span>
           {isMenuOpen && (
             <div className="user-menu">
               <div className='seccion seccion-datos'>
                 <img
                   className='avatar-user avatar-menu'
                   alt='avatar'
-                  src={`https://unavatar.io/${user.username}`}
+                  src={`https://unavatar.io/${user.nombreusuario}`}
                 />
                 <div className="seccion-datos-texto">
-                  <p className='datos-name' > {user.name}</p>
-                  <p className='datos-email'> {user.email}</p>
+                  <p className='datos-name' > {user.nombre}</p>
+                  <p className='datos-email'> {user.correoelec}</p>
                 </div>
               </div>
               <div className="seccion seccion-opciones">
                 <Link className='settings'>Mi cuenta</Link>
                 <Link className='settings'>Mis cursos</Link>
                 <Link className='settings'>Ajustes</Link>
-                {role==='maestro' && (<Link to={'/agregar-videos'} className='settings'>Agregar</Link>)}
+                {user.rol==='maestro' && (<Link to={'/agregar-videos'} className='settings'>Agregar</Link>)}
               </div>
               <div className="seccion seccion-logout">
                 <button className='btn-logout' onClick={logout}>Cerrar Sesión</button>
