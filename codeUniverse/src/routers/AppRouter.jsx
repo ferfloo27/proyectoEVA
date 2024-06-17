@@ -7,6 +7,7 @@ import { DetalleCurso } from "../components/vistaDetalleCurso/DetalleCurso"
 import { AuthProvider } from "../hooks/AuthProvider/AuthProvider"
 import {PanelAgregarVideo} from '../components/subirVideos/PanelAgregarVideo'
 import {Panel} from '../pages/Panel/Panel'
+import { PanelMaestro } from "../components/panelMaestro/PanelMaestro"
 
 export const AppRouter = () =>{
   
@@ -21,6 +22,7 @@ export const AppRouter = () =>{
             <Route path="/detalle-curso" element={<DetalleCurso/>}/>
             <Route path="/agregar-videos" element={<PanelAgregarVideo/>}/>
             <Route path="/*" element={<HomePage/>}/>
+            <Route path="/panel-maestro" element={<PanelMaestro/>}/>
         </Routes>
     )
 }

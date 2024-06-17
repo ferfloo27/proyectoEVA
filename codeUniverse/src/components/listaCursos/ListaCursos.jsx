@@ -10,9 +10,11 @@ import videosJSON from '../../videos.json'
 export function ListaCursos() {
   const userLocal = JSON.parse(localStorage.getItem('user'))
   const videos = videosJSON
-  const clasesInscritas = videos.filter(clase => userLocal.videosInscritos.includes(clase.idVideo));
-  const clasesNoInscritas = videos.filter(clase => !(userLocal.videosInscritos.includes(clase.idVideo)));
+  const clasesSubidas = videos.filter(clase => userLocal.videosSubidos.some(subido => subido.idVideo === clase.idVideo))
+  const clasesInscritas = videos.filter(clase => userLocal.videosInscritos.some(inscrito => inscrito.idVideo === clase.idVideo));
+  const clasesNoInscritas = videos.filter(clase => !(userLocal.videosInscritos.some(inscrito => inscrito.idVideo === clase.idVideo)));
   console.log('inscritas', clasesInscritas)
+  console.log('mis clases', clasesSubidas)
 
   // useEffect(() => {
   //   axios.get('http://localhost/ejemploBDeva/fetch_video.php')
@@ -29,6 +31,29 @@ export function ListaCursos() {
       {userLocal.rol !== null && (
         <main className='contenido'>
           {/* {video ? <Tarjeta nombreClase={video.nombre} descripcion={video.descripcion} urlVideo={video.url}/> : 'no hay videos cargados'} */}
+          {userLocal.rol === 'maestro' && (
+            clasesSubidas.length > 0 ? (
+              <div className="seccion-clases">
+                <h1 className='titulo-clases'>Mis Cursos</h1>
+                <div className="clases">
+                  {clasesSubidas.map(clase => (
+                    <Tarjeta
+                      key={clase.id}
+                      idVideo={clase.id}
+                      nombreClase={clase.titulovideo}
+                      descripcion={clase.descripcion}
+                      urlVideo={clase.url}
+                      inscrito ={true}
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : (<>
+            <h1 className='titulo-clases'>Mis Clases</h1>
+            <h2>No subiste ningun curso todavia</h2>
+            </>
+            )
+          )}
           {clasesInscritas.length > 0 ? (
             <div className="seccion-clases">
               <h1 className='titulo-clases'>Clases Inscritas</h1>
