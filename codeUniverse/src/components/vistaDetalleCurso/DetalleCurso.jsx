@@ -7,13 +7,9 @@ import { Nota } from '../Nota/Nota';
 import { useLocation } from 'react-router-dom';
 
 export function DetalleCurso() {
-  const [notes, setNotes] = useState([]);
   const location = useLocation();
-  const {nombreClase, descripcion, urlVideo} = location.state || {};
+  const {idVideo,nombreClase, descripcion, urlVideo} = location.state || {};
 
-  const addNote = (note) => {
-    setNotes([...notes, note]);
-  };
 
   return (
     <>
@@ -26,7 +22,7 @@ export function DetalleCurso() {
             <VideoPlayer url={urlVideo} />
           </div>
           <div className="notes-section">
-            <Nota notes={notes} addNote={addNote} />
+            <Nota idVideo={idVideo} />
           </div>
         
       </main>

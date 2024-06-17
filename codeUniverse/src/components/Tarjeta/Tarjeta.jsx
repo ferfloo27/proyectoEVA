@@ -9,7 +9,7 @@ export function Tarjeta({ idVideo, nombreClase, descripcion, urlVideo,inscrito }
   const {inscribirCurso} =useAuth();
 
   const handleVerClase = () => {
-    navigate('/detalle-curso', { state: { nombreClase, descripcion, urlVideo } });
+    navigate('/detalle-curso', { state: { idVideo,nombreClase, descripcion, urlVideo } });
   };
 
   const handleInscribirme = () => {
@@ -37,8 +37,10 @@ export function Tarjeta({ idVideo, nombreClase, descripcion, urlVideo,inscrito }
       <h1 className="tarjeta-titulo">{nombreClase}</h1>
       <p className="tarjeta-descripcion"> {descripcion}</p>
       <div className="btns-tarjeta">
-      <a href="/detalle-curso" onClick={handleVerClase} className="tarjeta-btn">Ver Clase</a>
-      {!inscrito && <button onClick={handleInscribirme} className="tarjeta-btn">Inscribirme</button> }
+      
+      {!inscrito ? (<button onClick={handleInscribirme} className="tarjeta-btn">Inscribirme</button>) : (
+        <a href="/detalle-curso" onClick={handleVerClase} className="tarjeta-btn">Ver Clase</a>
+      ) }
      
       </div>
     </div>

@@ -31,15 +31,15 @@ export function ListaCursos() {
       {userLocal.rol !== null && (
         <main className='contenido'>
           {/* {video ? <Tarjeta nombreClase={video.nombre} descripcion={video.descripcion} urlVideo={video.url}/> : 'no hay videos cargados'} */}
-          {userLocal.rol === 'maestro' && (
+          {/* {userLocal.rol === 'maestro' && (
             clasesSubidas.length > 0 ? (
               <div className="seccion-clases">
                 <h1 className='titulo-clases'>Mis Cursos</h1>
                 <div className="clases">
                   {clasesSubidas.map(clase => (
                     <Tarjeta
-                      key={clase.id}
-                      idVideo={clase.id}
+                      key={clase.idVideo}
+                      idVideo={clase.idVideo}
                       nombreClase={clase.titulovideo}
                       descripcion={clase.descripcion}
                       urlVideo={clase.url}
@@ -53,15 +53,15 @@ export function ListaCursos() {
             <h2>No subiste ningun curso todavia</h2>
             </>
             )
-          )}
+          )} */}
           {clasesInscritas.length > 0 ? (
             <div className="seccion-clases">
               <h1 className='titulo-clases'>Clases Inscritas</h1>
               <div className="clases">
                 {clasesInscritas.map(clase => (
                   <Tarjeta
-                    key={clase.id}
-                    idVideo={clase.id}
+                    key={clase.idVideo}
+                    idVideo={clase.idVideo}
                     nombreClase={clase.titulovideo}
                     descripcion={clase.descripcion}
                     urlVideo={clase.url}

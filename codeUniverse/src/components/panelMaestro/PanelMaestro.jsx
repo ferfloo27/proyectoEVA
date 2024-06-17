@@ -9,41 +9,53 @@ export function PanelMaestro() {
   const userLocal = JSON.parse(localStorage.getItem('user'))
   const videos = videosJSON
   const usuarios = usuariosJSON
-  const clasesSubidas = videos.filter(clase => userLocal.videosSubidos.some(subido => subido.idVideo === clase.idVideo))
-  const [videosSubidos, setVideosSubidos] = useState([]);
 
-  
+  useEffect(() => {
+    console.log(estudiantesInscritos)
+  }, [])
+  // Función para extraer IDs de estudiantes inscritos
+  const obtenerIdsEstudiantesInscritos = (videosSubidos) => {
+    const idsEstudiantes = new Set();
+    videosSubidos.forEach(video => {
+      video.inscritos.forEach(id => idsEstudiantes.add(id));
+    });
+    return Array.from(idsEstudiantes);  // Convertimos el Set a Array
+  };
+
+  // Filtrar estudiantes inscritos
+  const estudiantesInscritos = usuarios.filter(user =>
+    obtenerIdsEstudiantesInscritos(userLocal.videosSubidos).includes(user.id)
+  );
 
   return (
     <>
       <Header />
       <main className='contenido'>
         {userLocal.rol !== null && (
+          <ul>
+            {userLocal.videosSubidos.map((video, index) => (
+              videos.map(clase => (clase.idVideo === video.idVideo &&
+                <div key={index} >
+                  <h2>Curso: {clase.titulovideo}</h2>
+                  <h3>Estudiantes</h3>
+                  <div className='apuntes-content'>
+                    {estudiantesInscritos.map((estudiante) => (
+                      <div key={estudiante} className='apuntes' >
+                        {estudiante.videosInscritos.map((nombre, index) => nombre.idVideo === video.idVideo &&
+                          <div key={index} className='apuntes-est'>
+                            <h4>{estudiante.nombre} : Apuntes</h4>
+                            <li key={index}>{nombre.apuntes}</li>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>)
+              )
+            ))}
 
-          userLocal.rol === 'maestro' && (
-            clasesSubidas.length > 0 ? (
-              <div className="seccion-clases">
-                <h1 className='titulo-clases'>Mis Cursos</h1>
-                <div className="clases ">
-                  {userLocal.videosSubidos.map(clase => (
-                    <div key={clase.idVideo} className=' panel-maestro'>
+          </ul>
 
-                      <h1>{clase.idVideo}</h1>
-                      
-                      <h3>Lista de Estudiantes</h3>
-                      {clase.inscritos.map(estudiante => (
-                        <ul key={estudiante}>{estudiante}</ul>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ) : (<>
-              <h1 className='titulo-clases'>Mis Clases</h1>
-              <h2>No subiste ningun curso todavia</h2>
-            </>
-            )
-          )
         )}
       </main>
     </>

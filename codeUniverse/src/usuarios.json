@@ -11,7 +11,7 @@
           { "idVideo": 3, "inscritos": [5] }
         ],
         "videosInscritos": [
-          { "idVideo": 5, "apuntes": [] },
+          { "idVideo": 5, "apuntes": ["prueba 1"] },
           { "idVideo": 9, "apuntes": [] }
         ]
       },
@@ -24,8 +24,8 @@
       "rol": "estudiante",
       "videosSubidos": [],
       "videosInscritos": [
-      { "idVideo": 1, "apuntes": ["Necesito repasar esto"] },
-      { "idVideo": 8, "apuntes": [] }
+      { "idVideo": 1, "apuntes": ["Necesito repasar esto","juan estaba durmiendo"] },
+      { "idVideo": 4, "apuntes": [] }
     ]
   },
   {
@@ -38,7 +38,7 @@
       "videosSubidos": [2],
       "videosInscritos": [
       { "idVideo": 1, "apuntes": ["Necesito repasar esto urgente"] },
-      { "idVideo": 8, "apuntes": [] }
+      { "idVideo": 5, "apuntes": ["Lorem ipsum "] }
     ]
   },
   {
@@ -58,8 +58,14 @@
       "nombreusuario": "elenar",
       "contrasena": "elena_pass",
       "rol": "maestro",
-      "videosSubidos": [4,5],
-      "videosInscritos": []
+      "videosSubidos": [
+          { "idVideo": 4, "inscritos": [2,3] },
+          { "idVideo": 5, "inscritos": [2] }
+        ],
+        "videosInscritos": [
+          { "idVideo": 2, "apuntes": ["prueba 1"] },
+          { "idVideo": 9, "apuntes": [] }
+        ]
   },
   {
       "id": 6,
