@@ -12,11 +12,11 @@ export const ListaClases = ({nombreClase, descripcion}) => {
     <div className="class-list">
       <h1 className='titulo-det-course'>{nombreClase}</h1>
       <h3 >{descripcion}</h3>
-      <ul>
+      {/* <ul>
         {classes.map((cls, index) => (
           <li key={index}>{cls}</li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };

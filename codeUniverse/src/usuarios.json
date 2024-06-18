@@ -11,8 +11,8 @@
           { "idVideo": 3, "inscritos": [5] }
         ],
         "videosInscritos": [
-          { "idVideo": 5, "apuntes": ["prueba 1"] },
-          { "idVideo": 9, "apuntes": [] }
+          { "idVideo": 5, "apuntes": ["Replicación del ADN \nConcepto Básico:\nLa replicación del ADN es el proceso por el cual se duplica el ADN de una célula antes de la división celular, asegurando que cada célula hija reciba una copia completa del genoma. \nFases del Proceso: \nIniciación: \nLa replicación comienza en sitios específicos del ADN conocidos como orígenes de replicación. La helicasa desenrolla la doble hélice de ADN, creando una burbuja de replicación con dos horquillas de replicación. \nElongación: \nLa ADN polimerasa agrega nucleótidos complementarios a las cadenas molde en dirección 5' a 3'. La cadena líder se sintetiza de manera continua, mientras que la cadena rezagada se sintetiza en fragmentos de Okazaki que luego se unen. \nTerminación: \nLa replicación termina cuando las horquillas de replicación se encuentran o cuando se alcanzan los telómeros. Las enzimas de reparación corrigen errores y unen los fragmentos de Okazaki."] },
+          { "idVideo": 9, "apuntes": [" La Era de Shakespeare \nImpacto Cultural: \nInfluencia Literaria: Shakespeare influyó profundamente en la literatura inglesa y mundial, estableciendo paradigmas en la dramaturgia y la poesía.\nLegado Permanente: Sus obras continúan siendo estudiadas, representadas, y reinterpretadas en todo el mundo."] }
         ]
       },
   {
@@ -25,7 +25,9 @@
       "videosSubidos": [],
       "videosInscritos": [
       { "idVideo": 1, "apuntes": [ "Características Principales:\n- Sintaxis Simple y Legible: Python utiliza una sintaxis que es fácil de entender y escribir, lo que lo hace ideal tanto para principiantes como para desarrolladores experimentados.\n- Tipado Dinámico: Python es un lenguaje con tipado dinámico, lo que significa que no es necesario declarar explícitamente el tipo de una variable.\n- Interpretado: Python ejecuta el código línea por línea, lo que facilita la depuración y la experimentación.\n- Gran Biblioteca Estándar: Python incluye una amplia gama de módulos y paquetes integrados que facilitan la implementación de diversas tareas, desde operaciones matemáticas hasta la manipulación de archivos."] },
-      { "idVideo": 4, "apuntes": ["Lorem ipsum "] }
+      { "idVideo": 3, "apuntes": ["Impresionismo \n Impacto del Impresionismo: \nEl Impresionismo rompió con las técnicas tradicionales de la pintura, influyendo en movimientos posteriores como el Postimpresionismo y abriendo camino a la pintura moderna. La técnica y la atención a los efectos de la luz y la atmósfera proporcionaron una nueva manera de ver y representar el mundo."] },
+      { "idVideo": 6, "apuntes": ["Existencialismo\n Importancia del Existencialismo: \nEl Existencialismo ha influido en diversas áreas de la cultura y el pensamiento, incluyendo la literatura, la psicología y la política. Su enfoque en la libertad y la responsabilidad personal continúa resonando en debates contemporáneos sobre la identidad y el significado."] },
+      { "idVideo": 7, "apuntes": [" Ciclo de Vida del Desarrollo de Software (SDLC) \nDefinición del SDLC:\nEl Ciclo de Vida del Desarrollo de Software (SDLC, por sus siglas en inglés) es un proceso estructurado que guía el desarrollo de software desde la concepción hasta la implementación y mantenimiento. Su objetivo es garantizar la calidad y eficiencia en la creación de software, abordando todas las etapas necesarias para entregar un producto funcional y confiable."] }
     ]
   },
   {
@@ -33,12 +35,16 @@
       "nombre": "Laura Torres",
       "correoelec": "laura.torres@example.com",
       "nombreusuario": "laura_t",
-      "contranase": "mypassword",
+      "contrasena": "mypassword",
       "rol": "maestro",
-      "videosSubidos": [2],
+      "videosSubidos": [
+          { "idVideo": 2, "inscritos": [2,6] },
+          { "idVideo": 5, "inscritos": [5] }
+        ],
       "videosInscritos": [
       { "idVideo": 1, "apuntes": ["Replicación del ADN\n Concepto Básico:\n La replicación del ADN es el proceso por el cual se duplica el ADN de una célula antes de la división celular, asegurando que cada célula hija reciba una copia completa del genoma.\n Fases del Proceso:\n Iniciación:\n La replicación comienza en sitios específicos del ADN conocidos como orígenes de replicación. \n La helicasa desenrolla la doble hélice de ADN, creando una burbuja de replicación con dos horquillas de replicación."] },
-      { "idVideo": 5, "apuntes": ["Lorem ipsum "] }
+      { "idVideo": 8, "apuntes": ["Reacciones Orgánicas Importantes \nReacciones de Sustitución Nucleofílica:\nDefinición:\nReacciones en las que un nucleófilo reemplaza a un grupo saliente en una molécula. "] },
+      { "idVideo": 7, "apuntes": [" ingenieria de Software Reacciones Orgánicas Importantes \nReacciones de Sustitución Nucleofílica:\nDefinición:\nReacciones en las que un nucleófilo reemplaza a un grupo saliente en una molécula. "] }
     ]
   },
   {
@@ -59,12 +65,13 @@
       "contrasena": "elena_pass",
       "rol": "maestro",
       "videosSubidos": [
-          { "idVideo": 4, "inscritos": [2,3] },
-          { "idVideo": 5, "inscritos": [2] }
+          { "idVideo": 4, "inscritos": [1,9,4] },
+          { "idVideo": 6, "inscritos": [2,4] }
         ],
         "videosInscritos": [
-          { "idVideo": 2, "apuntes": ["prueba 1"] },
-          { "idVideo": 9, "apuntes": [] }
+          { "idVideo": 5, "apuntes": [" Renacimiento \nCaracterísticas del Renacimiento: \nRevalorización de la Antigüedad Clásica: \nLos artistas y pensadores del Renacimiento buscaron inspiración en el arte y la filosofía de la Grecia y Roma clásicas. Se produjo un resurgimiento del interés por los ideales de belleza y proporción de la antigüedad clásica. Humanismo: \nEl enfoque se centró en el hombre como la medida de todas las cosas, un concepto que se refleja en el arte y la literatura de la época. Los artistas comenzaron a representar temas más humanistas, destacando la figura humana y sus emociones. Innovaciones en la Perspectiva: \nSe desarrolló la perspectiva lineal, que permitió a los artistas crear una ilusión de profundidad y espacio en sus obras. Filipo Brunelleschi y Leon Battista Alberti fueron pioneros en el uso de la perspectiva en la arquitectura y pintura. Técnicas Artísticas: \nUso del óleo en lugar del fresco, que permitía una mayor manipulación del color y detalles más precisos. Introducción del claroscuro para crear un mayor contraste entre luz y sombra, dando volumen y realismo a las figuras. Artistas Representativos: \nLeonardo da Vinci: Famoso por obras como La Última Cena y La Gioconda (Mona Lisa), destacó por su habilidad en la pintura y su interés en la anatomía. Miguel Ángel Buonarroti: Reconocido por sus esculturas como David y la pintura del techo de la Capilla Sixtina. Rafael Sanzio: Conocido por sus obras de arte religioso y sus retratos, incluyendo La Escuela de Atenas."] },
+          { "idVideo": 7, "apuntes": [] },
+          { "idVideo": 8, "apuntes": [] }
         ]
   },
   {
@@ -84,7 +91,11 @@
       "nombreusuario": "lucia_f",
       "contrasena": "lucia_321",
       "rol": "maestro",
-      "videosSubidos": [6,9,7],
+      "videosSubidos": [
+          { "idVideo": 7, "inscritos": [2,3,5] },
+          { "idVideo": 8, "inscritos": [5,6,3] },
+          {"idVideo":9, "inscritos": [4,8,1]}
+        ],
       "videosInscritos": []
   },
   {
@@ -104,7 +115,9 @@
       "nombreusuario": "sofia_r",
       "contrasena": "sofia2023",
       "rol": "maestro",
-      "videosSubidos": [8,10],
+      "videosSubidos": [
+          { "idVideo": 10, "inscritos": [6,1,3] }
+        ],
       "videosInscritos": []
   },
   {

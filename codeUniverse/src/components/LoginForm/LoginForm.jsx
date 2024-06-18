@@ -2,6 +2,7 @@ import logo from '../../assets/logo.png'
 import { useState } from 'react';
 import { useAuth } from '../../hooks/AuthProvider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import { Modal } from '../Modal/Modal';
 
 
 export const LoginForm = () => {
@@ -21,10 +22,14 @@ export const LoginForm = () => {
   //   }
   // };
 
+  const [isModalVisible, setModalVisible] = useState(false);
+
   const handleLogin = () => {
     const success = login({ username, password });
     if (success) {
       console.log('Inicio de sesión exitoso!');
+      setModalVisible(true);
+    setTimeout(() => setModalVisible(false), 3000)
       navigate('/panel')
     } else {
       console.log('Nombre de usuario o contraseña incorrectos.');
@@ -97,6 +102,11 @@ export const LoginForm = () => {
             Continuar con Facebook</button>
         </div>
       </form>
+      <Modal
+        isVisible={isModalVisible}
+        onClose={() => setModalVisible(false)}
+        message="Inicio de sesion exitoso"
+      />
     </div>
   )
 };

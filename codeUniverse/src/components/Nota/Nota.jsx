@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import './Nota.css'
+import { Modal } from '../Modal/Modal';
 
 export const Nota = ({ idVideo }) => {
   const [noteText, setNoteText] = useState('');
   const userLocal = JSON.parse(localStorage.getItem('user'))
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const handleAddNote = () => {
     const actualizado = {
@@ -17,7 +19,8 @@ export const Nota = ({ idVideo }) => {
     console.log(actualizado)
     localStorage.setItem('user', JSON.stringify(actualizado));
     setNoteText('')
-    console.log(noteText, idVideo)
+    setModalVisible(true);
+    setTimeout(() => setModalVisible(false), 3000)
   };
 
   return (
@@ -39,6 +42,11 @@ export const Nota = ({ idVideo }) => {
         />
        
       </div>
+      <Modal
+        isVisible={isModalVisible}
+        onClose={() => setModalVisible(false)}
+        message="Apuntes guardados correctamente"
+      />
     </div>
   );
 };

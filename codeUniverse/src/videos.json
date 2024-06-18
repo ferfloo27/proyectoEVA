@@ -10,7 +10,7 @@
   },
   {
       "idVideo": 2,
-      "usuario_idusuario": 2,
+      "usuario_idusuario": 3,
       "titulovideo": "Matemáticas Avanzadas",
       "descripcion": "Exploración de temas avanzados en matemáticas.",
       "size": "350MB",
@@ -28,7 +28,7 @@
   },
   {
       "idVideo": 4,
-      "usuario_idusuario": 4,
+      "usuario_idusuario": 5,
       "titulovideo": "Algebra Lineal",
       "descripcion": "Tutorial completo de programación en Python para principiantes.",
       "size": "500MB",
@@ -37,7 +37,7 @@
   },
   {
       "idVideo": 5,
-      "usuario_idusuario": 5,
+      "usuario_idusuario": 3,
       "titulovideo": "Biología Molecular",
       "descripcion": "Estudio detallado de los procesos biológicos a nivel molecular.",
       "size": "400MB",
@@ -46,7 +46,7 @@
   },
   {
       "idVideo": 6,
-      "usuario_idusuario": 6,
+      "usuario_idusuario": 5,
       "titulovideo": "Filosofía Contemporánea",
       "descripcion": "Análisis de las corrientes filosóficas contemporáneas.",
       "size": "320MB",
@@ -64,7 +64,7 @@
   },
   {
       "idVideo": 8,
-      "usuario_idusuario": 8,
+      "usuario_idusuario": 7,
       "titulovideo": "Química Orgánica",
       "descripcion": "Curso introductorio sobre los principios de la química orgánica.",
       "size": "290MB",
@@ -73,7 +73,7 @@
   },
   {
       "idVideo": 9,
-      "usuario_idusuario": 9,
+      "usuario_idusuario": 7,
       "titulovideo": "Literatura Inglesa",
       "descripcion": "Estudio de las obras clásicas de la literatura inglesa.",
       "size": "370MB",
@@ -82,7 +82,7 @@
   },
   {
       "idVideo": 10,
-      "usuario_idusuario": 10,
+      "usuario_idusuario": 9,
       "titulovideo": "Economía Internacional",
       "descripcion": "Análisis de la economía global y las relaciones internacionales.",
       "size": "430MB",
