@@ -4,6 +4,7 @@ import usuariosJSON from '../../usuarios.json'
 import { Tarjeta } from '../Tarjeta/Tarjeta'
 import { Header } from '../header/Header'
 import './PanelMaestro.css'
+import { PanelRevision } from '../panelRevision/PanelRevision'
 
 export function PanelMaestro() {
   const userLocal = JSON.parse(localStorage.getItem('user'))
@@ -27,11 +28,22 @@ export function PanelMaestro() {
     obtenerIdsEstudiantesInscritos(userLocal.videosSubidos).includes(user.id)
   );
 
+  const [inRevision, setInRevision] =useState(false)
+  const [selectedEst, setSelectedEst] =useState('')
+  
+
+  const handleRevisar = (estudiante,apunte) => {
+    setSelectedEst({nombre:estudiante, apuntes:apunte})
+    setInRevision(true)
+  }
+
+
   return (
     <>
       <Header />
       <main className='contenido'>
         {userLocal.rol !== null && (
+          <>
           <ul>
             {userLocal.videosSubidos.map((video, index) => (
               videos.map(clase => (clase.idVideo === video.idVideo &&
@@ -42,9 +54,12 @@ export function PanelMaestro() {
                     {estudiantesInscritos.map((estudiante) => (
                       <div key={estudiante} className='apuntes' >
                         {estudiante.videosInscritos.map((nombre, index) => nombre.idVideo === video.idVideo &&
-                          <div key={index} className='apuntes-est'>
-                            <h4>{estudiante.nombre} : Apuntes</h4>
-                            <li key={index}>{nombre.apuntes}</li>
+                          <div key={index} className='cont-apuntes'>
+                            <button onClick={() =>handleRevisar(estudiante.nombre,nombre.apuntes)} className='btn-revisar tarjeta-btn'>Revisar</button>
+                            <div className='apuntes-est'>
+                              <h4>{estudiante.nombre} : Apuntes</h4>
+                              <li ><p className='apuntes-parrafo'>{nombre.apuntes}</p></li>
+                            </div>
                           </div>
                         )}
                       </div>
@@ -53,9 +68,9 @@ export function PanelMaestro() {
                 </div>)
               )
             ))}
-
           </ul>
-
+          {inRevision && <PanelRevision nombreEst={selectedEst?.nombre} apuntes={selectedEst?.apuntes}/>}
+          </>
         )}
       </main>
     </>

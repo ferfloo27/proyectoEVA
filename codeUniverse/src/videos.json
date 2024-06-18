@@ -2,7 +2,7 @@
   {
       "idVideo": 1,
       "usuario_idusuario": 1,
-      "titulovideo": "Introducción a la Física",
+      "titulovideo": "Programación en Python",
       "descripcion": "Un curso básico sobre los fundamentos de la física.",
       "size": "200MB",
       "tipo": "mp4",
@@ -29,7 +29,7 @@
   {
       "idVideo": 4,
       "usuario_idusuario": 4,
-      "titulovideo": "Programación en Python",
+      "titulovideo": "Algebra Lineal",
       "descripcion": "Tutorial completo de programación en Python para principiantes.",
       "size": "500MB",
       "tipo": "mp4",

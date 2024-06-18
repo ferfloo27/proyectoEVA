@@ -13,9 +13,30 @@
 }
 
 .apuntes-est{
+  position: relative;
   border: 1px solid black;
   width: 300px;
   height: 10rem;
   padding: 5px 20px;
+  border-radius: 5px;
   /* background-color: blueviolet; */
+}
+
+.btn-revisar{
+  position: absolute;
+  margin-left: 255px;
+  
+  border: none;
+  border-radius: 0 5px;
+  z-index: 1;
+}
+
+.apuntes-parrafo{
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limita a 3 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Añade "..." al final */
+  line-height: 1.5; /* Ajusta la altura de la línea */
+  max-height: calc(1.5em * 3); /
 }

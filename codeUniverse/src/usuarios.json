@@ -24,8 +24,8 @@
       "rol": "estudiante",
       "videosSubidos": [],
       "videosInscritos": [
-      { "idVideo": 1, "apuntes": ["Necesito repasar esto","juan estaba durmiendo"] },
-      { "idVideo": 4, "apuntes": [] }
+      { "idVideo": 1, "apuntes": [ "Características Principales:\n- Sintaxis Simple y Legible: Python utiliza una sintaxis que es fácil de entender y escribir, lo que lo hace ideal tanto para principiantes como para desarrolladores experimentados.\n- Tipado Dinámico: Python es un lenguaje con tipado dinámico, lo que significa que no es necesario declarar explícitamente el tipo de una variable.\n- Interpretado: Python ejecuta el código línea por línea, lo que facilita la depuración y la experimentación.\n- Gran Biblioteca Estándar: Python incluye una amplia gama de módulos y paquetes integrados que facilitan la implementación de diversas tareas, desde operaciones matemáticas hasta la manipulación de archivos."] },
+      { "idVideo": 4, "apuntes": ["Lorem ipsum "] }
     ]
   },
   {
@@ -33,11 +33,11 @@
       "nombre": "Laura Torres",
       "correoelec": "laura.torres@example.com",
       "nombreusuario": "laura_t",
-      "contrasena": "mypassword",
+      "contranase": "mypassword",
       "rol": "maestro",
       "videosSubidos": [2],
       "videosInscritos": [
-      { "idVideo": 1, "apuntes": ["Necesito repasar esto urgente"] },
+      { "idVideo": 1, "apuntes": ["Replicación del ADN\n Concepto Básico:\n La replicación del ADN es el proceso por el cual se duplica el ADN de una célula antes de la división celular, asegurando que cada célula hija reciba una copia completa del genoma.\n Fases del Proceso:\n Iniciación:\n La replicación comienza en sitios específicos del ADN conocidos como orígenes de replicación. \n La helicasa desenrolla la doble hélice de ADN, creando una burbuja de replicación con dos horquillas de replicación."] },
       { "idVideo": 5, "apuntes": ["Lorem ipsum "] }
     ]
   },
