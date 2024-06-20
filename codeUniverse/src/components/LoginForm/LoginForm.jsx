@@ -24,18 +24,29 @@ export const LoginForm = () => {
 
   const [isModalVisible, setModalVisible] = useState(false);
 
-  const handleLogin = () => {
-    const success = login({ username, password });
+  // const handleLogin = () => {
+  //   const success = login({ username, password });
+  //   if (success) {
+  //     console.log('Inicio de sesión exitoso!');
+  //     setModalVisible(true);
+  //   setTimeout(() => setModalVisible(false), 3000)
+  //     navigate('/panel')
+  //   } else {
+  //     console.log('Nombre de usuario o contraseña incorrectos.');
+  //   }
+  // };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const loginData = { username, password };
+    const success = await login(loginData);
     if (success) {
       console.log('Inicio de sesión exitoso!');
       setModalVisible(true);
     setTimeout(() => setModalVisible(false), 3000)
       navigate('/panel')
-    } else {
-      console.log('Nombre de usuario o contraseña incorrectos.');
     }
   };
-
  
 
   return (

@@ -9,12 +9,12 @@ export function Tarjeta({ idVideo, nombreClase, descripcion, urlVideo,inscrito }
   const {inscribirCurso} =useAuth();
 
   const handleVerClase = () => {
-    navigate('/detalle-curso', { state: { idVideo,nombreClase, descripcion, urlVideo } });
+    navigate('/detalle-curso', { state: { idVideo } });
   };
 
   const handleInscribirme = () => {
     inscribirCurso(idVideo);
-  
+    console.log('algo')
   };
   
   

@@ -63,8 +63,8 @@ export const ModalEdit = ({ isVisible, onClose, nombre, descriptionVideo, video 
   if (!isVisible) return null;
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
+    <div className="modal-overlay-edit">
+      <div className="modal-content-edit">
         <h1>Editar clase: {videoEdit.titulovideo} </h1>
         <form className="" onSubmit={handleSubmit} encType="multipart/form-data">
           <label>

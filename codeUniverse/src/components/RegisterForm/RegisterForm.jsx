@@ -11,18 +11,37 @@ export const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('estudiante');
-  const { register } = useAuth();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     const newUser = { name, username, email, password, role };
-    const success = await register(newUser);
-    if (success) {
-      alert('Registro exitoso!');
-    } else {
-      alert('El nombre de usuario o correo electrónico ya están en uso.');
+
+    try {
+      const response = await fetch('http://localhost/api/api.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        setName('')
+        setUsername('')
+        setEmail('')
+        setPassword('')
+        setRole('estudiante')
+        alert('Registro exitoso!');
+      } else {
+        alert(data.message || 'Error en el registro.');
+      }
+    } catch (error) {
+      console.error('Error en el registro:', error);
+      alert('Error en el registro.');
     }
   };
+
 
   // const handleRegister = () => {
   //   const newUser = { name, username, email, password, role };

@@ -17,7 +17,26 @@ export function PanelAgregarVideo() {
     console.log(e.target.files[0]);
   };
 
-  const handleSubmit = (e) => {
+  const subirVideo = async (idVideo) => {
+    if (userLocal) {
+      const updatedVideosSubidos = [...userLocal.videosSubidos];
+      const isVideoAlreadySubscribed = updatedVideosSubidos.some(video => video.idVideo === idVideo);
+      if (!isVideoAlreadySubscribed) {
+        updatedVideosSubidos.push({ idVideo, inscritos: [] });
+      }
+
+      const updatedUser = {
+        ...userLocal,
+        videosSubidos: updatedVideosSubidos
+      };
+      
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+
+      
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!file) {
       alert("Por favor, selecciona un archivo");
@@ -30,16 +49,18 @@ export function PanelAgregarVideo() {
     formData.append('description', description);
     formData.append('usuario_idusuario', userLocal.id);
 
-    axios.post('http://localhost/api/apiVideos.php', formData)
-      .then(response => {
-        if (response.data.success) {
-          console.log("Archivo subido exitosamente:", response.data);
-          // Opcional: Limpiar el formulario o redirigir al usuario
-        } else {
-          console.error("Error al subir el archivo:", response.data.message);
-        }
-      })
-      .catch(error => console.error('Error uploading file:', error));
+    try {
+      const response = await axios.post('http://localhost/api/apiVideos.php', formData);
+      if (response.data) {
+        console.log("Archivo subido exitosamente:", response.data);
+        subirVideo(response.data.video.idVideo)
+        // Opcional: Limpiar el formulario o redirigir al usuario
+      } else {
+        console.error("Error al subir el archivo:", response.data.message);
+      }
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
   };
 
   return (

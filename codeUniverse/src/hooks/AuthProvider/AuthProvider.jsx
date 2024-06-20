@@ -40,38 +40,30 @@ export const AuthProvider = ({ children }) => {
   //   return false;
   // };
 
-  const login = async ({ username, password }) => {
-    // Construcción de la URL con los parámetros
-    const url = new URL('http://localhost/api/api.php');
-    url.searchParams.append('nombreusuario', username);
-    url.searchParams.append('contrasena', password);
-
+  const login = async (loginData) => {
     try {
-      const response = await fetch(url, {
-        method: 'GET',
+      const response = await fetch('http://localhost/api/api.php', {
+        method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
+        body: JSON.stringify(loginData)
       });
 
+      const data = await response.json();
       if (response.ok) {
-        const data = await response.json();
-        console.log('Respuesta de la API:', data);
-
-        if (data && data.nombreusuario) {
-          setUser(data);
-          localStorage.setItem('user', JSON.stringify(data));
-          return true;
-        } else {
-          console.error('Nombre de usuario o contraseña incorrectos.');
-        }
+        //setUser(data.user);
+        localStorage.setItem('user', JSON.stringify(data.user)); // Guardar datos del usuario en localStorage
+        return true;
       } else {
-        console.error('Error en la respuesta de la API:', response.statusText);
+        alert(data.message && 'Nombre de usuario o contraseña incorrectos.');
+        return false;
       }
     } catch (error) {
-      console.error('Error al realizar la solicitud:', error);
+      console.error('Error en el inicio de sesión:', error);
+      alert('Error en el inicio de sesión.');
+      return false;
     }
-    return false;
   };
 
   // const login = ({username,password}) => {
