@@ -1,6 +1,26 @@
 .cont-revisor{
-  border-left: 3px solid bisque;
-  width: 28%;
-  height: 30rem;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border-radius:10px ;
+  border: 1px solid rgba(233, 174, 174);
+    width: 100%;
+  height: 40rem;
+  box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.2);
+
+  /* background-color: yellow;   */
 }
+
+.textarea-revision{
+  padding: 15px;
+}
+
+.btns-revision{
+  display: flex;
+  gap: 5px;
+  padding-left:  15px;
+}
+
+.input-revision{
+  width: 100%;
+}
+

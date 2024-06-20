@@ -9,8 +9,6 @@ export const Panel = () => {
 
     const changeUser = () => {
         if(userLocal.rol === 'maestro'){
-            console.log('sepudo')
-            console.log('lcalstorage ',userLocal.rol)
             return <VistaMaestro  />
         } else {
             if( userLocal.rol === 'estudiante'){

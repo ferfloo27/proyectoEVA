@@ -13,6 +13,7 @@
 .encabezado-left {
     display: flex;
     align-items: center;
+    text-decoration: none;
 }
 
 .encabezado-titulo {

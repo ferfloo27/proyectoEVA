@@ -9,23 +9,36 @@ export function PanelAgregarVideo() {
   const [file, setFile] = useState(null);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-
+  const userLocal = JSON.parse(localStorage.getItem('user'));
 
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
-    console.log(file);
+    console.log(e.target.files[0]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!file) {
+      alert("Por favor, selecciona un archivo");
+      return;
+    }
+
     const formData = new FormData();
     formData.append('fichero', file);
     formData.append('nombre', name);
     formData.append('description', description);
+    formData.append('usuario_idusuario', userLocal.id);
 
-    axios.post('http://localhost/ejemploBDeva/upload.php', formData)
-      .then(response => console.log(response.data))
+    axios.post('http://localhost/api/apiVideos.php', formData)
+      .then(response => {
+        if (response.data.success) {
+          console.log("Archivo subido exitosamente:", response.data);
+          // Opcional: Limpiar el formulario o redirigir al usuario
+        } else {
+          console.error("Error al subir el archivo:", response.data.message);
+        }
+      })
       .catch(error => console.error('Error uploading file:', error));
   };
 

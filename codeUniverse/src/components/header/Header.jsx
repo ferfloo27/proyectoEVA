@@ -20,10 +20,10 @@ export function Header() {
 
   return (
     <header className='encabezado'>
-      <div className='encabezado-left'>
+      <Link to='/panel' className='encabezado-left'>
         <img src={logo} alt='logo codeUniverse' className='encabezado-logo' />
         <h1 className='encabezado-titulo'>Code Universe</h1>
-      </div>
+      </Link>
       {
         user ? (
           <div className="encabezado-user user-menu-container"

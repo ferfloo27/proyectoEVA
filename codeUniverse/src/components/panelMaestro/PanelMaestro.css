@@ -1,20 +1,23 @@
-.panel-maestro{
-  display: flex;
-  border: 1px solid black;
-  flex-direction: column;
+.contenido-panel-maestro{
+  display: grid;
+  gap: 30px;
+  grid-template-areas: 'left left left left  right right';
+  /* flex-wrap: wrap; */
+  padding: 5em 6em;   
+  min-height: 88.2vh;
 }
 
 .apuntes-content{
   display: flex;
   gap: 10px;
   width: 50rem;
-  
+  flex-wrap: wrap;
   flex-direction: row;
 }
 
 .apuntes-est{
   position: relative;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0,0, .5);
   width: 300px;
   height: 10rem;
   padding: 5px 20px;
@@ -25,7 +28,7 @@
 .btn-revisar{
   position: absolute;
   margin-left: 255px;
-  
+ 
   border: none;
   border-radius: 0 5px;
   z-index: 1;
@@ -39,4 +42,36 @@
   text-overflow: ellipsis; /* Añade "..." al final */
   line-height: 1.5; /* Ajusta la altura de la línea */
   max-height: calc(1.5em * 3); /
+}
+
+.content-datos-video{
+  display: flex;
+  border-bottom:1px solid rgba(233, 174, 174, 0.5);
+  
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contenido-left{
+  grid-area: left;
+  width: 100%;
+  margin-top: 0px;
+  
+  /* border: 1px solid rgba(233, 174, 174, 0.5); */
+  
+}
+
+.contenido-right{
+  grid-area: right;
+  width: 100%;
+}
+
+.contenido-article{
+  padding: 10px ;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  /* border-bottom: 1px solid rgba(233, 174, 174); */
+  border: 1px solid rgba(233, 174, 174);
+  box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.2);
+
 }

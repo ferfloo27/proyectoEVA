@@ -6,8 +6,10 @@ import users from '../../usuarios.json'
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem('user');
+    return storedUser ? JSON.parse(storedUser) : null;
+  });  const navigate = useNavigate();
 
   // const login = async ({ username, password }) => {
   //   try {
@@ -38,18 +40,51 @@ export const AuthProvider = ({ children }) => {
   //   return false;
   // };
 
+  const login = async ({ username, password }) => {
+    // Construcción de la URL con los parámetros
+    const url = new URL('http://localhost/api/api.php');
+    url.searchParams.append('nombreusuario', username);
+    url.searchParams.append('contrasena', password);
 
-  const login = ({username,password}) => {
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-    const foundUser =users.find(user => user.nombreusuario === username && user.contrasena === password);
-    console.log(foundUser)
-    if(foundUser) {
-      setUser(foundUser);
-      localStorage.setItem('user', JSON.stringify(foundUser));
-      return true;
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Respuesta de la API:', data);
+
+        if (data && data.nombreusuario) {
+          setUser(data);
+          localStorage.setItem('user', JSON.stringify(data));
+          return true;
+        } else {
+          console.error('Nombre de usuario o contraseña incorrectos.');
+        }
+      } else {
+        console.error('Error en la respuesta de la API:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error al realizar la solicitud:', error);
     }
     return false;
   };
+
+  // const login = ({username,password}) => {
+
+  //   const foundUser =users.find(user => user.nombreusuario === username && user.contrasena === password);
+  //   console.log(foundUser)
+  //   if(foundUser) {
+  //     setUser(foundUser);
+  //     localStorage.setItem('user', JSON.stringify(foundUser));
+  //     return true;
+  //   }
+  //   return false;
+  // };
 
   const register = async (newUser) => {
     try {
@@ -99,10 +134,41 @@ export const AuthProvider = ({ children }) => {
   //   checkAuth();
   // }, [checkAuth]);
 
+  const inscribirCurso = async (idVideo) => {
+    if (user) {
+      const updatedVideosInscritos = [...user.videosInscritos];
+      const isVideoAlreadySubscribed = updatedVideosInscritos.some(video => video.idVideo === idVideo);
+      if (!isVideoAlreadySubscribed) {
+        updatedVideosInscritos.push({ idVideo, apuntes: [] });
+      }
+
+      const updatedUser = {
+        ...user,
+        videosInscritos: updatedVideosInscritos
+      };
+      setUser(updatedUser);
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+
+      try {
+        const response = await fetch('http://localhost/api/api.php', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedUser)
+        });
+        if (!response.ok) {
+          console.error('Error al inscribir el curso');
+        }
+      } catch (error) {
+        console.error('Error al inscribir el curso:', error);
+      }
+    }
+  };
 
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, register }}>
+    <AuthContext.Provider value={{ user, login, logout, register, inscribirCurso }}>
       {children}
     </AuthContext.Provider>
   );
