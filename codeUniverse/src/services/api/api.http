@@ -1,0 +1,29 @@
+### pedir todos los usuarios
+GET http://localhost/api/api.php
+
+### pedir un usuario especifico
+GET http://localhost/api/api.php?nombreusuario=elenar&contrasena=elena_pass
+
+
+### actualizar notas de un estudiante
+PATCH http://localhost/api/api.php 
+Content-Type: application/json
+
+{
+  "id":5,
+  "idVideo":7,
+  "apuntes":"la api funciona pruenba "
+}
+
+### Inscribir Usuario en un Video
+PATCH http://localhost/api/api.php
+Content-Type: application/json
+
+{
+  "id": 5,
+  "idVideo": 4
+}
+
+
+### recuperar todos los videos 
+GET http://localhost/api/apiVideos.php

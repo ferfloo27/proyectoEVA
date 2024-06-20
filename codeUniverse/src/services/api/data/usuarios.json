@@ -1,0 +1,331 @@
+[
+    {
+        "id": 1,
+        "nombre": "Ana G\u00f3mez",
+        "correoelec": "ana.gomez@example.com",
+        "nombreusuario": "ana_gomez",
+        "contrasena": "pass123",
+        "rol": "maestro",
+        "videosSubidos": [
+            {
+                "idVideo": 1,
+                "inscritos": [
+                    2,
+                    3
+                ]
+            },
+            {
+                "idVideo": 3,
+                "inscritos": [
+                    5
+                ]
+            }
+        ],
+        "videosInscritos": [
+            {
+                "idVideo": 5,
+                "apuntes": [
+                    "Replicaci\u00f3n del ADN \nConcepto B\u00e1sico:\nLa replicaci\u00f3n del ADN es el proceso por el cual se duplica el ADN de una c\u00e9lula antes de la divisi\u00f3n celular, asegurando que cada c\u00e9lula hija reciba una copia completa del genoma. \nFases del Proceso: \nIniciaci\u00f3n: \nLa replicaci\u00f3n comienza en sitios espec\u00edficos del ADN conocidos como or\u00edgenes de replicaci\u00f3n. La helicasa desenrolla la doble h\u00e9lice de ADN, creando una burbuja de replicaci\u00f3n con dos horquillas de replicaci\u00f3n. \nElongaci\u00f3n: \nLa ADN polimerasa agrega nucle\u00f3tidos complementarios a las cadenas molde en direcci\u00f3n 5' a 3'. La cadena l\u00edder se sintetiza de manera continua, mientras que la cadena rezagada se sintetiza en fragmentos de Okazaki que luego se unen. \nTerminaci\u00f3n: \nLa replicaci\u00f3n termina cuando las horquillas de replicaci\u00f3n se encuentran o cuando se alcanzan los tel\u00f3meros. Las enzimas de reparaci\u00f3n corrigen errores y unen los fragmentos de Okazaki."
+                ]
+            },
+            {
+                "idVideo": 9,
+                "apuntes": [
+                    " La Era de Shakespeare \nImpacto Cultural: \nInfluencia Literaria: Shakespeare influy\u00f3 profundamente en la literatura inglesa y mundial, estableciendo paradigmas en la dramaturgia y la poes\u00eda.\nLegado Permanente: Sus obras contin\u00faan siendo estudiadas, representadas, y reinterpretadas en todo el mundo."
+                ]
+            },
+            {
+                "idVideo": 2,
+                "apuntes": []
+            },
+            {
+                "idVideo": 10,
+                "apuntes": [
+                    "aputes de economia internacional"
+                ]
+            },
+            {
+                "idVideo": 12,
+                "apuntes": [
+                    "demasiado relajante"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "nombre": "Carlos P\u00e9rez",
+        "correoelec": "carlos.perez@example.com",
+        "nombreusuario": "carlosp",
+        "contrasena": "securepass",
+        "rol": "estudiante",
+        "videosSubidos": [],
+        "videosInscritos": [
+            {
+                "idVideo": 1,
+                "apuntes": [
+                    "Caracter\u00edsticas Principales:\n- Sintaxis Simple y Legible: Python utiliza una sintaxis que es f\u00e1cil de entender y escribir, lo que lo hace ideal tanto para principiantes como para desarrolladores experimentados.\n- Tipado Din\u00e1mico: Python es un lenguaje con tipado din\u00e1mico, lo que significa que no es necesario declarar expl\u00edcitamente el tipo de una variable.\n- Interpretado: Python ejecuta el c\u00f3digo l\u00ednea por l\u00ednea, lo que facilita la depuraci\u00f3n y la experimentaci\u00f3n.\n- Gran Biblioteca Est\u00e1ndar: Python incluye una amplia gama de m\u00f3dulos y paquetes integrados que facilitan la implementaci\u00f3n de diversas tareas, desde operaciones matem\u00e1ticas hasta la manipulaci\u00f3n de archivos."
+                ]
+            },
+            {
+                "idVideo": 3,
+                "apuntes": [
+                    "Impresionismo \n Impacto del Impresionismo: \nEl Impresionismo rompi\u00f3 con las t\u00e9cnicas tradicionales de la pintura, influyendo en movimientos posteriores como el Postimpresionismo y abriendo camino a la pintura moderna. La t\u00e9cnica y la atenci\u00f3n a los efectos de la luz y la atm\u00f3sfera proporcionaron una nueva manera de ver y representar el mundo."
+                ]
+            },
+            {
+                "idVideo": 6,
+                "apuntes": [
+                    "Existencialismo\n Importancia del Existencialismo: \nEl Existencialismo ha influido en diversas \u00e1reas de la cultura y el pensamiento, incluyendo la literatura, la psicolog\u00eda y la pol\u00edtica. Su enfoque en la libertad y la responsabilidad personal contin\u00faa resonando en debates contempor\u00e1neos sobre la identidad y el significado."
+                ]
+            },
+            {
+                "idVideo": 7,
+                "apuntes": [
+                    " Ciclo de Vida del Desarrollo de Software (SDLC) \nDefinici\u00f3n del SDLC:\nEl Ciclo de Vida del Desarrollo de Software (SDLC, por sus siglas en ingl\u00e9s) es un proceso estructurado que gu\u00eda el desarrollo de software desde la concepci\u00f3n hasta la implementaci\u00f3n y mantenimiento. Su objetivo es garantizar la calidad y eficiencia en la creaci\u00f3n de software, abordando todas las etapas necesarias para entregar un producto funcional y confiable."
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "nombre": "Laura Torres",
+        "correoelec": "laura.torres@example.com",
+        "nombreusuario": "laura_t",
+        "contrasena": "mypassword",
+        "rol": "maestro",
+        "videosSubidos": [
+            {
+                "idVideo": 2,
+                "inscritos": [
+                    2,
+                    6
+                ]
+            },
+            {
+                "idVideo": 5,
+                "inscritos": [
+                    5
+                ]
+            }
+        ],
+        "videosInscritos": [
+            {
+                "idVideo": 1,
+                "apuntes": [
+                    "Replicaci\u00f3n del ADN\n Concepto B\u00e1sico:\n La replicaci\u00f3n del ADN es el proceso por el cual se duplica el ADN de una c\u00e9lula antes de la divisi\u00f3n celular, asegurando que cada c\u00e9lula hija reciba una copia completa del genoma.\n Fases del Proceso:\n Iniciaci\u00f3n:\n La replicaci\u00f3n comienza en sitios espec\u00edficos del ADN conocidos como or\u00edgenes de replicaci\u00f3n. \n La helicasa desenrolla la doble h\u00e9lice de ADN, creando una burbuja de replicaci\u00f3n con dos horquillas de replicaci\u00f3n."
+                ]
+            },
+            {
+                "idVideo": 8,
+                "apuntes": [
+                    "Reacciones Org\u00e1nicas Importantes \nReacciones de Sustituci\u00f3n Nucleof\u00edlica:\nDefinici\u00f3n:\nReacciones en las que un nucle\u00f3filo reemplaza a un grupo saliente en una mol\u00e9cula. "
+                ]
+            },
+            {
+                "idVideo": 7,
+                "apuntes": [
+                    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "nombre": "Miguel S\u00e1nchez",
+        "correoelec": "miguel.sanchez@example.com",
+        "nombreusuario": "miguels",
+        "contrasena": "mig1234",
+        "rol": "estudiante",
+        "videosSubidos": [],
+        "videosInscritos": []
+    },
+    {
+        "id": 5,
+        "nombre": "Elena R\u00edos",
+        "correoelec": "elena.rios@example.com",
+        "nombreusuario": "elenar",
+        "contrasena": "elena_pass",
+        "rol": "maestro",
+        "videosSubidos": [
+            {
+                "idVideo": 4,
+                "inscritos": [
+                    1,
+                    9,
+                    4
+                ]
+            },
+            {
+                "idVideo": 6,
+                "inscritos": [
+                    2,
+                    4
+                ]
+            }
+        ],
+        "videosInscritos": [
+            {
+                "idVideo": 5,
+                "apuntes": [
+                    " Renacimiento \nCaracter\u00edsticas del Renacimiento: \nRevalorizaci\u00f3n de la Antig\u00fcedad Cl\u00e1sica: \nLos artistas y pensadores del Renacimiento buscaron inspiraci\u00f3n en el arte y la filosof\u00eda de la Grecia y Roma cl\u00e1sicas. Se produjo un resurgimiento del inter\u00e9s por los ideales de belleza y proporci\u00f3n de la antig\u00fcedad cl\u00e1sica. Humanismo: \nEl enfoque se centr\u00f3 en el hombre como la medida de todas las cosas, un concepto que se refleja en el arte y la literatura de la \u00e9poca. Los artistas comenzaron a representar temas m\u00e1s humanistas, destacando la figura humana y sus emociones. Innovaciones en la Perspectiva: \nSe desarroll\u00f3 la perspectiva lineal, que permiti\u00f3 a los artistas crear una ilusi\u00f3n de profundidad y espacio en sus obras. Filipo Brunelleschi y Leon Battista Alberti fueron pioneros en el uso de la perspectiva en la arquitectura y pintura. T\u00e9cnicas Art\u00edsticas: \nUso del \u00f3leo en lugar del fresco, que permit\u00eda una mayor manipulaci\u00f3n del color y detalles m\u00e1s precisos. Introducci\u00f3n del claroscuro para crear un mayor contraste entre luz y sombra, dando volumen y realismo a las figuras. Artistas Representativos: \nLeonardo da Vinci: Famoso por obras como La \u00daltima Cena y La Gioconda (Mona Lisa), destac\u00f3 por su habilidad en la pintura y su inter\u00e9s en la anatom\u00eda. Miguel \u00c1ngel Buonarroti: Reconocido por sus esculturas como David y la pintura del techo de la Capilla Sixtina. Rafael Sanzio: Conocido por sus obras de arte religioso y sus retratos, incluyendo La Escuela de Atenas."
+                ]
+            },
+            {
+                "idVideo": 7,
+                "apuntes": "la api funciona x2 x3"
+            },
+            {
+                "idVideo": 8,
+                "apuntes": "juan prueba 3"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "nombre": "Roberto Mart\u00ednez",
+        "correoelec": "roberto.martinez@example.com",
+        "nombreusuario": "robmart",
+        "contrasena": "robertosafe",
+        "rol": "estudiante",
+        "videosSubidos": [],
+        "videosInscritos": []
+    },
+    {
+        "id": 7,
+        "nombre": "Luc\u00eda Fern\u00e1ndez",
+        "correoelec": "lucia.fernandez@example.com",
+        "nombreusuario": "lucia_f",
+        "contrasena": "lucia_321",
+        "rol": "maestro",
+        "videosSubidos": [
+            {
+                "idVideo": 7,
+                "inscritos": [
+                    2,
+                    3,
+                    5
+                ]
+            },
+            {
+                "idVideo": 8,
+                "inscritos": [
+                    5,
+                    6,
+                    3
+                ]
+            },
+            {
+                "idVideo": 9,
+                "inscritos": [
+                    4,
+                    8,
+                    1
+                ]
+            }
+        ],
+        "videosInscritos": []
+    },
+    {
+        "id": 8,
+        "nombre": "Pedro Garc\u00eda",
+        "correoelec": "pedro.garcia@example.com",
+        "nombreusuario": "pedrog",
+        "contrasena": "pedro567",
+        "rol": "estudiante",
+        "videosSubidos": [],
+        "videosInscritos": []
+    },
+    {
+        "id": 9,
+        "nombre": "Sof\u00eda Ram\u00edrez",
+        "correoelec": "sofia.ramirez@example.com",
+        "nombreusuario": "sofia_r",
+        "contrasena": "sofia2023",
+        "rol": "maestro",
+        "videosSubidos": [
+            {
+                "idVideo": 10,
+                "inscritos": [
+                    6,
+                    1,
+                    3
+                ]
+            }
+        ],
+        "videosInscritos": []
+    },
+    {
+        "id": 10,
+        "nombre": "Javier Hern\u00e1ndez",
+        "correoelec": "javier.hernandez@example.com",
+        "nombreusuario": "javierh",
+        "contrasena": "javi_secure",
+        "rol": "estudiante",
+        "videosSubidos": [],
+        "videosInscritos": []
+    },
+    {
+        "id": 11,
+        "nombre": "Miguel Angel Duran",
+        "correoelec": "201900417@est.umss.edu",
+        "nombreusuario": "midudev",
+        "contrasena": "$2y$10$6gvnym3qTbn\/.IgtyXMSxukSwYV1W7Z0cCvsrcDdhYzCXe3OJP9HK",
+        "rol": "maestro",
+        "videosSubidos": [],
+        "videosInscritos": [
+            {
+                "idVideo": 1,
+                "apuntes": []
+            },
+            {
+                "idVideo": 12,
+                "apuntes": []
+            },
+            {
+                "idVideo": 3,
+                "apuntes": []
+            },
+            {
+                "idVideo": 4,
+                "apuntes": []
+            },
+            {
+                "idVideo": 5,
+                "apuntes": []
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "nombre": "Joaquin Martinez Quiroga",
+        "correoelec": "juan.perez@example.com",
+        "nombreusuario": "pheralb",
+        "contrasena": "$2y$10$JQraBSVL5lyy\/eGrG1bz5OrHWSZ8a3ydxcRh7VYMcgyFEPEv4nRyy",
+        "rol": "estudiante",
+        "videosSubidos": [],
+        "videosInscritos": [
+            {
+                "idVideo": 13,
+                "apuntes": [
+                    "por favor funciona no me falles"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "nombre": "Pedro Marco Quintanilla",
+        "correoelec": "marisolnatalyguzmanzapata@gmail.com",
+        "nombreusuario": "pedrope",
+        "contrasena": "$2y$10$ntqI4uPQUPhcXTjS4iabkuAIb4GweWh64BtjwY\/h6C4mlmFnt6DBi",
+        "rol": "maestro",
+        "videosSubidos": [],
+        "videosInscritos": [
+            {
+                "idVideo": 2,
+                "apuntes": []
+            }
+        ]
+    }
+]
