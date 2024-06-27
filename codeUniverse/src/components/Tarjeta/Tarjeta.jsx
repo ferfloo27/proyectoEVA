@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/AuthProvider/AuthProvider';
 
 
-export function Tarjeta({ idVideo, nombreClase, descripcion, urlVideo,inscrito }) {
+export function Tarjeta({ idVideo,autorId, nombreClase, descripcion, urlVideo,inscrito }) {
+  const videoId =idVideo;
+  const autor = autorId;
   const navigate = useNavigate();
   const {inscribirCurso} =useAuth();
 
@@ -12,9 +14,11 @@ export function Tarjeta({ idVideo, nombreClase, descripcion, urlVideo,inscrito }
     navigate('/detalle-curso', { state: { idVideo } });
   };
 
-  const handleInscribirme = () => {
-    inscribirCurso(idVideo);
-    console.log('algo')
+  const handleInscribirme =  () => {
+   inscribirCurso(videoId,autor);
+    
+      console.log('faltan datos', videoId, autor)
+    
   };
   
   

@@ -4,14 +4,15 @@
   border-radius:10px ;
   border: 1px solid rgba(233, 174, 174);
     width: 100%;
-  height: 40rem;
+    padding: 10px;
+  height: ;
   box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.2);
 
   /* background-color: yellow;   */
 }
 
 .textarea-revision{
-  padding: 15px;
+  padding: 5px;
 }
 
 .btns-revision{

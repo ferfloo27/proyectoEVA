@@ -26,7 +26,7 @@ export function PanelMaestro() {
     };
 
     fetchVideos();
-  }, [videos]);
+  }, []);
 
   useEffect(() => {
     const fetchUsuarios = async () => {
@@ -106,15 +106,23 @@ export function PanelMaestro() {
                       <div className='apuntes-content'>
                         {estudiantesInscritos.map((estudiante, index) => (
                           <div key={index} className='apuntes' >
-                            {estudiante.videosInscritos.map((nombre, index) => nombre.idVideo === video.idVideo &&
+                            {estudiante.videosInscritos.map((videoN, index) => videoN.idVideo === video.idVideo &&
                             (
-                              nombre.apuntes.length > 0 && (
+                              videoN.apuntes.length > 0 && (
                                 <div key={index} className='cont-apuntes'>
                                   <section>
-                                    <button onClick={() => handleRevisar(estudiante.nombre, nombre.apuntes)} className='btn-revisar tarjeta-btn'>Revisar</button>
-                                    <div className='apuntes-est'>
+                                    <button onClick={() => handleRevisar(estudiante.nombre, videoN.apuntes)} className='btn-revisar tarjeta-btn'>Revisar</button>
+                                    <div className='apuntes-est apuntes-parrafo'>
                                       <h4>{estudiante.nombre} : Apuntes</h4>
-                                      < ><p className='apuntes-parrafo'>{nombre.apuntes}</p></>
+                                      {
+                                        videoN.apuntes.map((nota,index) => (
+                                          < >
+                                          <p key={index} >Señal :{nota.cue}</p>
+                                          <p key={index} >Notas :{nota.notes}</p>
+                                          <p key={index} >Resumen :{nota.summary}</p>
+                                          </>
+                                        ))
+                                      }
                                     </div>
                                   </section>
                                 </div>

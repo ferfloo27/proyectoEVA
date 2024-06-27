@@ -27,7 +27,7 @@ export function ListaCursos() {
 
   // Filtra los videos basados en la inscripción del usuario
   const clasesInscritas = videos.filter(clase => userLocal.videosInscritos.some(inscrito => inscrito.idVideo === clase.idVideo));
-  const clasesNoInscritas = videos.filter(clase => !(userLocal.videosInscritos.some(inscrito => inscrito.idVideo === clase.idVideo)));
+  const clasesNoInscritas = videos.filter(clase => !(userLocal.videosInscritos.some(inscrito => inscrito.idVideo === clase.idVideo )));
 
   return (
     <>
@@ -41,6 +41,7 @@ export function ListaCursos() {
                   <Tarjeta
                     key={clase.idVideo}
                     idVideo={clase.idVideo}
+                    autorId ={clase.usuario_idusuario}
                     nombreClase={clase.titulovideo}
                     descripcion={clase.descripcion}
                     urlVideo={clase.url}
@@ -60,10 +61,11 @@ export function ListaCursos() {
             <h1 className='titulo-clases'>Otras Clases</h1>
             <div className="clases">
               {clasesNoInscritas.map(clase => (
-                clase.usuario_idusuario !== userLocal.id && (
+                clase.usuario_idusuario != userLocal.id && (
                   <Tarjeta
                     key={clase.idVideo}
                     idVideo={clase.idVideo}
+                    autorId ={clase.usuario_idusuario}
                     nombreClase={clase.titulovideo}
                     descripcion={clase.descripcion}
                     urlVideo={clase.url}

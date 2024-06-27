@@ -11,6 +11,10 @@
     display: flex;
     margin-top: 20px;
   }
+
+  .titulo-det-course-note{
+    font-size: 25px !important;
+  }
   
   .note-input input {
     flex: 1;
@@ -21,7 +25,7 @@
   }
   
   .note-input button {
-    padding: 10px 20px;
+    padding: 6px 8px;
     border: none;
     background-color:var(--color-uno);
     color: #fff;
@@ -42,4 +46,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .h5p-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
   }

@@ -1,5 +1,5 @@
 // AuthContext.jsx
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 // import { getUsers, addUser } from '../../components/users';
 import { useNavigate } from 'react-router-dom';
 import users from '../../usuarios.json'
@@ -9,8 +9,27 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem('user');
     return storedUser ? JSON.parse(storedUser) : null;
-  });  const navigate = useNavigate();
+  }); const navigate = useNavigate();
 
+  const [usuarios, setUsuarios] = useState([])
+
+  useEffect(() => {
+    const fetchUsuarios = async () => {
+      try {
+        const response = await fetch('http://localhost/api/api.php');
+        if (response.ok) {
+          const data = await response.json();
+          setUsuarios(data);
+        } else {
+          console.error('Error en la respuesta de la API:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error al realizar la solicitud:', error);
+      }
+    };
+
+    fetchUsuarios();
+  }, []);
   // const login = async ({ username, password }) => {
   //   try {
   //     const response = await fetch('http://localhost/ejemploBDeva/login.php', {
@@ -126,14 +145,14 @@ export const AuthProvider = ({ children }) => {
   //   checkAuth();
   // }, [checkAuth]);
 
-  const inscribirCurso = async (idVideo) => {
-    if (user) {
+  const inscribirCurso = async (idVideo, autorId) => {
+
+    if (user && idVideo && autorId) {
       const updatedVideosInscritos = [...user.videosInscritos];
       const isVideoAlreadySubscribed = updatedVideosInscritos.some(video => video.idVideo === idVideo);
       if (!isVideoAlreadySubscribed) {
         updatedVideosInscritos.push({ idVideo, apuntes: [] });
       }
-
       const updatedUser = {
         ...user,
         videosInscritos: updatedVideosInscritos
@@ -151,11 +170,54 @@ export const AuthProvider = ({ children }) => {
         });
         if (!response.ok) {
           console.error('Error al inscribir el curso');
+        } else {
+          // Recupera el autor del video
+          const autor = usuarios.find(user => user.id === autorId);
+          if (autor) {
+            const updatedVideosSubidos = autor.videosSubidos.map(video => {
+              if (video.idVideo === idVideo) {
+                if (!video.inscritos.includes(user.id)) {
+                  video.inscritos.push(user.id);
+                }
+              }
+              return video;
+            });
+
+            const updatedAutor = {
+              ...autor,
+              videosSubidos: updatedVideosSubidos
+            };
+
+            console.log('autor', updatedAutor)
+            try {
+              const responseAutor = await fetch('http://localhost/api/api.php', {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedAutor)
+              });
+
+              if (!responseAutor.ok) {
+                console.error('Error al actualizar el autor del curso');
+              } else {
+
+                // Actualiza el estado local de usuarios para reflejar el cambio
+                // setUsuarios(prevUsuarios =>
+                //   prevUsuarios.map(user => (user.id === autorId ? updatedAutor : user))
+                // );
+              }
+            } catch (error) {
+              console.error('Error al actualizar el autor del curso:', error);
+            }
+          }
         }
       } catch (error) {
         console.error('Error al inscribir el curso:', error);
       }
     }
+
+
   };
 
 
