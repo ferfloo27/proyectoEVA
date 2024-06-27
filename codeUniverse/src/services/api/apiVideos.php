@@ -77,15 +77,19 @@ function handlePost() {
       return;
   }
 
+   // Determinación del nuevo idVideo
+   $newIdVideo = empty($data) ? 1 : end($data)['idVideo'] + 1;
+
   // Manejo de otros datos enviados en el formulario
   $newVideo = [
-      'idVideo' => end($data)['idVideo'] + 1,
-      'usuario_idusuario' => $_POST['usuario_idusuario'],
+      'idVideo' => $newIdVideo,
+      'usuario_idusuario' =>(int) $_POST['usuario_idusuario'],
       'titulovideo' => $_POST['nombre'],
       'descripcion' => $_POST['description'],
       'size' => formatSizeUnits($fileSize),
       'tipo' => $fileType,
-      'url' => $videoURL
+      'url' => $videoURL,
+      'words' => json_decode($_POST['words'], true) // Convertir de JSON a array
   ];
 
   $data[] = $newVideo;

@@ -120,70 +120,54 @@ function handlePut()
 
 function handlePatch()
 {
-  global $dataFile;
-  $data = json_decode(file_get_contents($dataFile), true);
-  $inputData = json_decode(file_get_contents('php://input'), true);
+    global $dataFile;
+    $data = json_decode(file_get_contents($dataFile), true);
+    $inputData = json_decode(file_get_contents('php://input'), true);
 
-  if (isset($inputData['apuntes']) && isset($inputData['idVideo'])) {
-    actualizarApuntes($inputData);
-  } elseif (isset($inputData['idVideo'])) {
-    inscribirVideo($inputData);
-  } else {
-    echo json_encode(['message' => 'Datos insuficientes para la operación']);
-  }
-
-  file_put_contents($dataFile, json_encode($data, JSON_PRETTY_PRINT));
-}
-
-function actualizarApuntes($inputData)
-{
-  global $dataFile;
-  $data = json_decode(file_get_contents($dataFile), true);
-
-  $userId = $inputData['id'];
-  $idVideo = $inputData['idVideo'];
-  $noteText = $inputData['apuntes'];
-
-  foreach ($data as &$user) {
-    if ($user['id'] == $userId) {
-      foreach ($user['videosInscritos'] as &$video) {
-        if ($video['idVideo'] == $idVideo) {
-          $video['apuntes'] = $noteText;
-          break;
-        }
-      }
-      break;
+    if (isset($inputData['userId']) && isset($inputData['idVideo']) && isset($inputData['autorId'])) {
+        // Actualizar videosSubidos
+        actualizarVideosSubidos($inputData);
+    } else {
+        echo json_encode(['message' => 'Datos insuficientes para la operación']);
     }
-  }
 
-  echo json_encode(['message' => 'Nota añadida', 'user' => $user]);
+    file_put_contents($dataFile, json_encode($data, JSON_PRETTY_PRINT));
 }
 
-function inscribirVideo($inputData)
+function actualizarVideosSubidos($inputData)
 {
-  global $dataFile;
-  $data = json_decode(file_get_contents($dataFile), true);
+    global $dataFile;
+    $data = json_decode(file_get_contents($dataFile), true);
 
-  $userId = $inputData['id'];
-  $idVideo = $inputData['idVideo'];
+    $autorId = $inputData['autorId'];
+    $idVideo = $inputData['idVideo'];
+    $userId = $inputData['userId'];
 
-  foreach ($data as &$user) {
-    if ($user['id'] == $userId) {
-      // Verifica si el video ya está inscrito
-      $isVideoAlreadySubscribed = false;
-      foreach ($user['videosInscritos'] as $video) {
-        if ($video['idVideo'] == $idVideo) {
-          $isVideoAlreadySubscribed = true;
-          break;
+    foreach ($data as &$user) {
+        if ($user['id'] == $autorId) {
+            $videoFound = false;
+            foreach ($user['videosSubidos'] as &$video) {
+                if ($video['idVideo'] == $idVideo) {
+                    // Si el video ya está, agregar el userId si no está ya inscrito
+                    if (!in_array($userId, $video['inscritos'])) {
+                        $video['inscritos'][] = $userId;
+                    }
+                    $videoFound = true;
+                    break;
+                }
+            }
+            // Si el video no está en la lista, agregar nuevo objeto
+            if (!$videoFound) {
+                $user['videosSubidos'][] = [
+                    'idVideo' => $idVideo,
+                    'inscritos' => [$userId]
+                ];
+            }
+            break;
         }
-      }
-      if (!$isVideoAlreadySubscribed) {
-        $user['videosInscritos'][] = ['idVideo' => $idVideo, 'apuntes' => []];
-      }
-      break;
     }
-  }
 
-  echo json_encode(['message' => 'Video inscrito', 'user' => $user]);
+    echo json_encode(['message' => 'videosSubidos actualizado', 'user' => $user]);
 }
+
 ?>
