@@ -8,15 +8,9 @@
         "tipo": "mp4",
         "url": "http://localhost/api/videos/667cb94dca628-4. useEffect - Hook.mp4",
         "words": [
-            {
-                "word": "sql"
-            },
-            {
-                "word": "mysql"
-            },
-            {
-                "word": "from"
-            }
+            "sql",
+            "mysql",
+            "from"
         ]
     },
     {
@@ -28,12 +22,8 @@
         "tipo": "mp4",
         "url": "http://localhost/api/videos/667cbe43e4558-Y2meta.app-Lógica de Programación ��_�� Aprende a programar en 10 minutos-(144p).mp4",
         "words": [
-            {
-                "word": "programación"
-            },
-            {
-                "word": "algoritmo"
-            }
+            "programación",
+            "algoritmo"
         ]
     },
     {
@@ -45,9 +35,7 @@
         "tipo": "mp4",
         "url": "http://localhost/api/videos/667cbf4c23b9a-Y2meta.app-Curso de programación desde cero _ Principio básico de programación #1-(144p).mp4",
         "words": [
-            {
-                "word": "programación"
-            }
+            "programación"
         ]
     },
     {
@@ -59,12 +47,8 @@
         "tipo": "mp4",
         "url": "http://localhost/api/videos/667cc1b0ec01c-Y2meta.app - ¿Qué es programar.mp4",
         "words": [
-            {
-                "word": "lógica"
-            },
-            {
-                "word": "software"
-            }
+            "lógica",
+            "software"
         ]
     },
     {
@@ -76,18 +60,10 @@
         "tipo": "mp4",
         "url": "http://localhost/api/videos/667cc3453edb1-Y2meta.app-Curso Spring. Introducción. Vídeo 2-(240p).mp4",
         "words": [
-            {
-                "word": "spring"
-            },
-            {
-                "word": "java"
-            },
-            {
-                "word": "backend"
-            },
-            {
-                "word": "API"
-            }
+            "spring",
+            "java",
+            "backend",
+            "main"
         ]
     },
     {
@@ -99,18 +75,25 @@
         "tipo": "mp4",
         "url": "http://localhost/api/videos/667cc418485da-Y2meta.app-Bucles en Javascript - Aprende a Programar con Node.js desde Cero - Clase 8-(144p).mp4",
         "words": [
-            {
-                "word": "for"
-            },
-            {
-                "word": "while"
-            },
-            {
-                "word": "node"
-            },
-            {
-                "word": "javascript"
-            }
+            "for",
+            "while",
+            "node", 
+            "javascript"
+        ]
+    },
+    {
+        "idVideo": 7,
+        "usuario_idusuario": 1,
+        "titulovideo": "conceptos avanzados de css",
+        "descripcion": "Curso avanzado de CSS",
+        "size": "1.77 MB",
+        "tipo": "mp4",
+        "url": "http://localhost/api/videos/667e20d8c1b74-video prueba 5.mp4",
+        "words": [
+            "css",
+            "selectores",
+            "flexbox",
+            "grid"
         ]
     }
 ]
