@@ -93,10 +93,16 @@ input {
     margin-right: 10px;
 }
 .login-logo{
-    width: 20px;
+    width: 100px;
     height: auto;
 }
 
 .login, .register{
     display: none;
+}
+
+.error-message{
+    color: #dc3545;
+    font-weight:500;
+    margin: 10px;
 }
