@@ -4,4 +4,3 @@ GRUPO 8
 Integrantes
 - Choquevillca Choquecallata Cenia Ligia
 - Calle Gonzales Fernando
-- Rojas Guzman Carlos Fernando
