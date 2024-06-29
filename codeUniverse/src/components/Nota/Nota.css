@@ -45,11 +45,21 @@
   .titulo-btn-notas{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    margin-top: 20px;
   }
 
   .h5p-container {
     margin-top: 20px;
     display: flex;
     justify-content: center;
+  }
+
+  .note-section{
+    margin-bottom: 5px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgb(0 0 0 /.2);
+  }
+
+  summary h3{
+    display: inline;
   }

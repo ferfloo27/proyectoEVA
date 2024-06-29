@@ -85,7 +85,7 @@
     margin-bottom: 0;
 }
 
-button:hover {
+.btn-words:hover {
     background-color: #0056b3;
 }
 

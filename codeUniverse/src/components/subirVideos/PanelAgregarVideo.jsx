@@ -10,16 +10,16 @@ export function PanelAgregarVideo() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const userLocal = JSON.parse(localStorage.getItem('user'));
-  const [words, setWords] = useState([{ word: '' }]);
+  const [words, setWords] = useState(['']);
 
-  const handleWordChange = (index, field, value) => {
+  const handleWordChange = (index, value) => {
     const newWords = [...words];
-    newWords[index][field] = value;
+    newWords[index] = value;
     setWords(newWords);
   };
 
   const addWord = () => {
-    setWords([...words, { word: '' }]);
+    setWords([...words, '']);
   };
 
   const removeWord = (index) => {
@@ -96,6 +96,7 @@ export function PanelAgregarVideo() {
             setFile(null)
             setName('')
             setDescription('')
+            setWords([''])
           } else {
             console.error('Error al actualizar usuario:', data.error);
           }
@@ -140,8 +141,8 @@ export function PanelAgregarVideo() {
                     Palabra:
                     <input
                       type="text"
-                      value={wordEntry.word}
-                      onChange={(e) => handleWordChange(index, 'word', e.target.value)}
+                      value={wordEntry}
+                      onChange={(e) => handleWordChange(index, e.target.value)}
                     />
                   </label>
                   {index > 0 && (

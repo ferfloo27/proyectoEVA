@@ -7,8 +7,8 @@ export function PanelRevision({ nombreEst, apuntes }) {
       {
         apuntes.map((nota, index) => (
           <>
-            <div className='textarea-revision'>
               <h2>Estudiante: {nombreEst}</h2>
+            <div className='textarea-revision'>
               <textarea className='input-revision'
                 value={nota.cue}
                 rows={5}

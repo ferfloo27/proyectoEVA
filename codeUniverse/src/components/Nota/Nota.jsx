@@ -6,6 +6,7 @@ export const Nota = ({ idVideo }) => {
   const [cueText, setCueText] = useState('');
   const [notesText, setNotesText] = useState('');
   const [summaryText, setSummaryText] = useState('');
+  const [feedback, setFeedback] = useState('');
   const userLocal = JSON.parse(localStorage.getItem('user')) || {};
   const [isModalVisible, setModalVisible] = useState(false);
 
@@ -16,13 +17,13 @@ export const Nota = ({ idVideo }) => {
       videosInscritos: userLocal.videosInscritos?.map(video =>
         video.idVideo === idVideo
           ? {
-              ...video,
-              apuntes:[ {
-                cue: cueText,
-                notes: notesText,
-                summary: summaryText,
-              }],
-            }
+            ...video,
+            apuntes: [{
+              cue: cueText,
+              notes: notesText,
+              summary: summaryText,
+            }],
+          }
           : video
       ),
     };
@@ -31,26 +32,20 @@ export const Nota = ({ idVideo }) => {
     localStorage.setItem('user', JSON.stringify(updatedUser));
 
     try {
-      // Realiza la solicitud PUT
-      const response = await fetch('http://localhost/api/api.php', {
-        method: 'PUT',
+      // Evaluar el resumen
+      const evaluationResponse = await fetch('http://localhost/api/gtp.php', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: JSON.stringify(updatedUser),
+        body: JSON.stringify({ idVideo, summary: summaryText }),
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        if (data.message === 'Usuario actualizado') {
-          // Opcional: refrescar el usuario del estado local después de guardar en el servidor
-          setModalVisible(true);
-          setTimeout(() => setModalVisible(false), 3000);
-        } else {
-          console.error('Error al actualizar usuario:', data.error);
-        }
+      if (evaluationResponse.ok) {
+        const evaluationData = await evaluationResponse.json();
+        setFeedback(evaluationData.message); // Mostrar la retroalimentación
       } else {
-        console.error('Error en la respuesta de la API:', response.statusText);
+        console.error('Error en la evaluación:', evaluationResponse.statusText);
       }
     } catch (error) {
       console.error('Error al realizar la solicitud:', error);
@@ -100,13 +95,11 @@ export const Nota = ({ idVideo }) => {
 
   return (
     <div className="notes">
-      <div className='titulo-btn-notas'>
       <h2 className="titulo-det-course-note">Notas de Cornell</h2>
-      <button className="btn" onClick={handleSaveNotes}>Guardar</button>
-      </div>
 
-      <div className="note-section">
-        <h3>Señal</h3>
+
+      <details open className="note-section">
+        <summary><h3>Ideas</h3></summary>
         <textarea
           value={cueText}
           onChange={(e) => setCueText(e.target.value)}
@@ -114,10 +107,10 @@ export const Nota = ({ idVideo }) => {
           rows={5}
           cols={43}
         />
-      </div>
+      </details>
 
-      <div className="note-section">
-        <h3>Notas</h3>
+      <details className="note-section">
+        <summary><h3>Notas</h3></summary>
         <textarea
           value={notesText}
           onChange={(e) => setNotesText(e.target.value)}
@@ -125,10 +118,10 @@ export const Nota = ({ idVideo }) => {
           rows={10}
           cols={43}
         />
-      </div>
+      </details>
 
-      <div className="note-section">
-        <h3>Resumen</h3>
+      <details className="note-section">
+        <summary><h3>Resumen</h3></summary>
         <textarea
           value={summaryText}
           onChange={(e) => setSummaryText(e.target.value)}
@@ -136,6 +129,17 @@ export const Nota = ({ idVideo }) => {
           rows={5}
           cols={43}
         />
+      </details>
+
+      {feedback && (
+        <div className="feedback">
+          <h3>Retroalimentación:</h3>
+          <p>{feedback}</p>
+        </div>
+      )}
+      <div className='titulo-btn-notas'>
+        <button disabled={false} className="tarjeta-btn" onClick={handleSaveNotes}>Guardar</button>
+        <button disabled={true} className="tarjeta-btn" >Evaluar</button>
       </div>
 
       <Modal
