@@ -6,31 +6,14 @@ export const Nota = ({ idVideo }) => {
   const [cueText, setCueText] = useState('');
   const [notesText, setNotesText] = useState('');
   const [summaryText, setSummaryText] = useState('');
-  const [feedback, setFeedback] = useState('');
+  const [observacionGeneral, setObservacionGeneral] = useState('');
+  const [evaluacionDetallada, setEvaluacionDetallada] = useState('');
+  const [puntaje, setPuntaje] = useState(0);
   const userLocal = JSON.parse(localStorage.getItem('user')) || {};
   const [isModalVisible, setModalVisible] = useState(false);
+  const [isDisabled , setIsDisabled] = useState(true)
 
-  const handleSaveNotes = async () => {
-    // Actualiza el localStorage
-    const updatedUser = {
-      ...userLocal,
-      videosInscritos: userLocal.videosInscritos?.map(video =>
-        video.idVideo === idVideo
-          ? {
-            ...video,
-            apuntes: [{
-              cue: cueText,
-              notes: notesText,
-              summary: summaryText,
-            }],
-          }
-          : video
-      ),
-    };
-
-    // Actualiza localStorage
-    localStorage.setItem('user', JSON.stringify(updatedUser));
-
+  const handleEvaluateNotes = async () => {
     try {
       // Evaluar el resumen
       const evaluationResponse = await fetch('http://localhost/api/gtp.php', {
@@ -43,13 +26,102 @@ export const Nota = ({ idVideo }) => {
 
       if (evaluationResponse.ok) {
         const evaluationData = await evaluationResponse.json();
-        setFeedback(evaluationData.message); // Mostrar la retroalimentación
+        console.log('datos server', evaluationData)
+          // Procesa la respuesta del backend
+        if (evaluationData.message) {
+          // Extrae el JSON de la cadena de respuesta
+          const evaluationJSON = evaluationData.message.match(/{.*}/);
+          if (evaluationJSON) {
+            const evaluation = JSON.parse(evaluationJSON[0]);
+
+            setObservacionGeneral(evaluation.observacionGeneral || 'No disponible');
+            setEvaluacionDetallada(evaluation.evaluacionDetallada || 'No disponible');
+            setPuntaje(evaluation.puntaje || 0);
+
+        // Actualiza el localStorage
+        const updatedUser = {
+          ...userLocal,
+          videosInscritos: userLocal.videosInscritos?.map(video =>
+            video.idVideo === idVideo
+              ? {
+                ...video,
+                apuntes: [{
+                  cue: cueText,
+                  notes: notesText,
+                  summary: summaryText,
+                  observacionGeneral: evaluation.observacionGeneral,
+                  evaluacionDetallada: evaluation.evaluacionDetallada,
+                  puntaje: evaluation.puntaje
+                }],
+              }
+              : video
+          ),
+        };
+
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+        setIsDisabled(false); // Habilita el botón Guardar
+      }
+      }
       } else {
         console.error('Error en la evaluación:', evaluationResponse.statusText);
       }
     } catch (error) {
       console.error('Error al realizar la solicitud:', error);
     }
+  };
+
+  const handleSaveNotes = async () => {
+    // Actualiza el localStorage
+    const updatedUser = {
+      ...userLocal,
+      videosInscritos: userLocal.videosInscritos.map(video =>
+        video.idVideo === idVideo
+          ? {
+            ...video,
+            apuntes: [{
+              cue: cueText,
+              notes: notesText,
+              summary: summaryText,
+              observacionGeneral,
+              evaluacionDetallada,
+              puntaje
+            }]
+          }
+          : video
+      )
+    };
+
+    // Actualiza localStorage
+    localStorage.setItem('user', JSON.stringify(updatedUser));
+    
+    try {
+          // Realiza la solicitud PUT
+          const response = await fetch('http://localhost/api/api.php', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json; charset=UTF-8',
+            },
+            body: JSON.stringify(updatedUser),
+          });
+    
+          if (response.ok) {
+            const data = await response.json();
+            if (data.message === 'Usuario actualizado') {
+              setCueText('')
+              setNotesText('')
+              setSummaryText('')
+              setIsDisabled(true)
+              setModalVisible(true);
+              setTimeout(() => setModalVisible(false), 3000);
+            } else {
+              console.error('Error al actualizar usuario:', data.error);
+            }
+          } else {
+            console.error('Error en la respuesta de la API:', response.statusText);
+          }
+        } catch (error) {
+          console.error('Error al realizar la solicitud:', error);
+        }
   };
 
   // const handleAddNote = async () => {
@@ -105,7 +177,7 @@ export const Nota = ({ idVideo }) => {
           onChange={(e) => setCueText(e.target.value)}
           placeholder="Añade las señales aquí (conceptos, preguntas clave)"
           rows={5}
-          cols={43}
+          cols={42}
         />
       </details>
 
@@ -116,7 +188,7 @@ export const Nota = ({ idVideo }) => {
           onChange={(e) => setNotesText(e.target.value)}
           placeholder="Añade las notas detalladas aquí"
           rows={10}
-          cols={43}
+          cols={42}
         />
       </details>
 
@@ -127,19 +199,20 @@ export const Nota = ({ idVideo }) => {
           onChange={(e) => setSummaryText(e.target.value)}
           placeholder="Añade un breve resumen aquí"
           rows={5}
-          cols={43}
+          cols={42}
         />
       </details>
 
-      {feedback && (
+      {observacionGeneral && (
         <div className="feedback">
           <h3>Retroalimentación:</h3>
-          <p>{feedback}</p>
-        </div>
+          <p><strong>Observación General:</strong> {observacionGeneral}</p>
+          <p><strong>Evaluación Detallada:</strong> {evaluacionDetallada}</p>
+          <p><strong>Puntaje:</strong> {puntaje}</p>        </div>
       )}
       <div className='titulo-btn-notas'>
-        <button disabled={false} className="tarjeta-btn" onClick={handleSaveNotes}>Guardar</button>
-        <button disabled={true} className="tarjeta-btn" >Evaluar</button>
+        <button className="tarjeta-btn" onClick={handleEvaluateNotes}>Evaluar</button>
+        <button disabled={isDisabled} onClick={handleSaveNotes} className="tarjeta-btn" >Guardar</button>
       </div>
 
       <Modal

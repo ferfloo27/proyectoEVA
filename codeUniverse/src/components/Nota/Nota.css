@@ -1,3 +1,9 @@
+.notes{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 690px;
+}
+
 .notes ul {
     list-style: none;
     padding: 0;
@@ -45,6 +51,7 @@
   .titulo-btn-notas{
     display: flex;
     align-items: center;
+    gap: 10px;
     margin-top: 20px;
   }
 

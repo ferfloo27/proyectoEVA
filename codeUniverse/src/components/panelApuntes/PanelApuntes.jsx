@@ -48,12 +48,33 @@ export function PanelApuntes() {
 
   const [inRevision, setInRevision] = useState(false)
   const [selectedEst, setSelectedEst] = useState('')
+  const [contenidoActivo, setContenidoActivo] = useState({})
+
+  const handleContentClick = (videoId, content) => {
+    setContenidoActivo((prevState) => ({
+      ...prevState,
+      [videoId]: content,
+    }));
+    console.log(contenidoActivo)
+  };
 
 
   const handleRevisar = (apunte) => {
     setSelectedEst({ apuntes: apunte })
     setInRevision(true)
   }
+
+  const getScoreClass = (score) => {
+    if (score <= 25) {
+      return 'low-score';
+    } else if (score <= 50) {
+      return 'medium-low-score';
+    } else if (score <= 75) {
+      return 'medium-high-score';
+    } else {
+      return 'high-score';
+    }
+  };
 
   return (
     <>
@@ -69,12 +90,27 @@ export function PanelApuntes() {
                     <div key={index} className='contenido-article'  >
                       <div className='content-datos-video'>
                         <div className='datos-video-panel-apuntes'>
-                          <h2>Curso: {clase.titulovideo}</h2>
+                          <h2 className='nombre-curso'>Curso: {clase.titulovideo}</h2>
                           {
                             video.apuntes.length > 0 ?
-                              (<button onClick={() => handleRevisar(video.apuntes)} className='btn-apuntes tarjeta-btn'>
-                                Revisar Apuntes
-                              </button>) : (
+                              (<div className='evaluate'>
+                                {video.apuntes.map((info, index) => (
+                                  <>
+                                    <div key={index} className={`res-test ${getScoreClass(info.puntaje)}`}>
+                                      <a href='#!' onClick={() => handleContentClick(video.idVideo, info.observacionGeneral)} className='test test-obs'><strong>Observacion General : </strong> </a>
+                                      <a href='#!' onClick={() => handleContentClick(video.idVideo, info.evaluacionDetallada)} className='test test-eva'><strong>Evaluacion:</strong>  </a>
+                                      <a href='#!' onClick={() => handleContentClick(video.idVideo, info.puntaje)} className='test test-score'><strong>Calificación:</strong> </a>
+                                    </div>
+                                    <div className={`res-test res-test-content ${getScoreClass(info.puntaje)}`}>
+                                      <p className='test-eva'>{contenidoActivo[video.idVideo]}</p>
+                                    </div>
+                                  </>
+                                ))}
+                                <button onClick={() => handleRevisar(video.apuntes)} className='btn-evaluate btn-apuntes tarjeta-btn'>
+                                  Mejorar Apuntes
+                                </button>
+                              </div>
+                              ) : (
                                 <p>No tienes apuntes de este curso</p>
                               )
                           }

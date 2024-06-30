@@ -14,7 +14,7 @@
 .apuntes-content{
   display: block;
   /* background-color: yellow; */
-  width: 50rem;
+  width: 60rem;
   flex-wrap: wrap;
   flex-direction: row;
 }
@@ -25,7 +25,7 @@
   align-items: center;
   gap: 5em;
   border: 1px solid rgba(0, 0,0, .5);
-  width: 90%;
+  width: 85%;
   margin-bottom: 10px;
   padding: 5px 10px;
   border-radius: 5px;
@@ -41,7 +41,9 @@
 }
 
 .res-test{
-  border: 1px solid rgb(0 0 0 /.5);
+  /* background-color: var(--color-danger); */
+  /* border: 1px solid rgb(0 0 0 /.5); */
+  border: 2px solid var(--color-danger);
   border-radius: 5px;
   display: flex;
   gap: 10px;
@@ -50,8 +52,6 @@
 
 .res-test p{
   margin: 0;
-  font-weight: bold;
-  color: var(--color-danger);
 }
 
 .apuntes-parrafo{
