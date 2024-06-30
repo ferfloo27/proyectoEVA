@@ -55,6 +55,10 @@
     margin-top: 20px;
   }
 
+  .btn-modal{
+    justify-content: center;
+  }
+
   .h5p-container {
     margin-top: 20px;
     display: flex;
@@ -69,4 +73,19 @@
 
   summary h3{
     display: inline;
+  }
+
+  .modal-save-notes{
+    background: rgb(255, 255, 255);
+  padding: 20px;
+  width: 15rem;
+  height: 10rem;
+  border-radius: 8px;
+  font-size: 11px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  }
+
+  .no-visible{
+    display:none;
   }
