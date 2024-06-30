@@ -1,0 +1,11 @@
+.datos-video-panel-apuntes{
+  display: flex;
+  width: 100%;
+  gap: 10em;
+  align-items: center;
+}
+
+.btn-apuntes{
+  height: 35px;
+  
+}

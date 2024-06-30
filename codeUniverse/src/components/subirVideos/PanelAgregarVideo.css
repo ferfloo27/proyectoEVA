@@ -56,7 +56,7 @@
 }
 
 .word-entry button {
-    background-color: #dc3545;
+    background-color: var(--color-danger);
     color: white;
     border: none;
     padding: 5px 10px;

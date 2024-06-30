@@ -50,8 +50,9 @@ export function Header() {
                 </div>
               </div>
               <div className="seccion seccion-opciones">
-                <Link className='settings'>Mi cuenta</Link>
+                {/* <Link className='settings'>Mi cuenta</Link> */}
                 {user.rol ==='maestro' && ( <Link to={'/panel-maestro'} className='settings'>Mis cursos</Link>)}
+                <Link to={'/panel-apuntes'} className='settings'>Mis apuntes</Link>
                 <Link className='settings'>Ajustes</Link>
                 {user.rol==='maestro' && (<Link to={'/agregar-videos'} className='settings'>Agregar</Link>)}
               </div>

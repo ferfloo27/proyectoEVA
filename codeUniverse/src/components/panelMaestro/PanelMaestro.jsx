@@ -86,6 +86,7 @@ export function PanelMaestro() {
     <>
       <Header />
       <main className='contenido-panel-maestro'>
+        <h2 className='subtit'>Mis clases</h2>
         {userLocal.rol !== null && (
           <>
             {userLocal.videosSubidos === null ? (<h3>no tienes cursos todavia</h3>) : (
@@ -103,18 +104,30 @@ export function PanelMaestro() {
                       </div>
 
                       <h3>Estudiantes</h3>
-                      <div className='apuntes-content'>
-                        {estudiantesInscritos.map((estudiante, index) => (
-                          <div key={index} className='apuntes' >
-                            {estudiante.videosInscritos.map((videoN, index) => videoN.idVideo === video.idVideo &&
-                            (
-                              videoN.apuntes.length > 0 && (
-                                <div key={index} className='cont-apuntes'>
-                                  <section>
-                                    <button onClick={() => handleRevisar(estudiante.nombre, videoN.apuntes)} className='btn-revisar tarjeta-btn'>Revisar</button>
-                                    <div className='apuntes-est apuntes-parrafo'>
-                                      <h4>{estudiante.nombre} : Apuntes</h4>
-                                      {
+                      {(video.inscritos.length > 0) ? (
+                        <div className='apuntes-content'>
+                          {estudiantesInscritos.map((estudiante, index) => (
+                            <div key={index} className='apuntes' >
+                              {estudiante.videosInscritos.map((videoN, index) => videoN.idVideo === video.idVideo &&
+                                (
+                                  <div key={index} className='cont-apuntes'>
+                                    <>
+                                      <div className='apuntes-est'>
+                                        <h4>{estudiante.nombre}</h4>
+                                        {videoN.apuntes.length > 0 ? (
+                                          <>
+                                            <button onClick={() => handleRevisar(estudiante.nombre, videoN.apuntes)} className='btn-revisar tarjeta-btn'>
+                                              Revisar notas
+                                            </button>
+                                            <div className='res-test'>
+                                              <p>Evaluacion previa:</p>
+                                              <p>50%</p>
+                                            </div>
+                                          </>
+                                        ) : (
+                                          <p>El estudiante no tiene apuntes todavia</p>
+                                        )}
+                                        {/* {
                                         videoN.apuntes.map((nota,index) => (
                                           < >
                                           <p key={index} >Señal :{nota.cue}</p>
@@ -122,16 +135,19 @@ export function PanelMaestro() {
                                           <p key={index} >Resumen :{nota.summary}</p>
                                           </>
                                         ))
-                                      }
-                                    </div>
-                                  </section>
-                                </div>
-                              )
-                            )
-                            )}
-                          </div>
-                        ))}
-                      </div>
+                                      } */}
+                                      </div>
+                                    </>
+                                  </div>
+
+                                )
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p>Todavia no tienes estudiantes inscritos</p>
+                      )}
                     </div>)
                   )
                 ))}
