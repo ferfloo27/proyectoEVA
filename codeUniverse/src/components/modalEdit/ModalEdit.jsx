@@ -6,6 +6,8 @@ import './ModalEdit.css';
 export const ModalEdit = ({ isVisible, onClose, nombre, descriptionVideo, video }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [palabras, setPalabras] = useState([])
+  const [newWord, setNewWord] = useState('');
   const [videoEdit, setVideoEdit] = useState({})
   const userLocal = JSON.parse(localStorage.getItem('user'));
 
@@ -15,6 +17,7 @@ export const ModalEdit = ({ isVisible, onClose, nombre, descriptionVideo, video 
       setVideoEdit(video)
       setName(video.titulovideo);
       setDescription(video.descripcion);
+      setPalabras(video.words)
     }
   }, [isVisible, video]);
 
@@ -22,14 +25,15 @@ export const ModalEdit = ({ isVisible, onClose, nombre, descriptionVideo, video 
     e.preventDefault();
 
     const updatedVideo = {
-      idVideo:videoEdit.idVideo,
+      idVideo: videoEdit.idVideo,
       titulovideo: name,
       descripcion: description,
-      size:videoEdit.size,
-      tipo:videoEdit.tipo,
-      url:videoEdit.url,
-      usuario_idusuario: userLocal.id // Ajusta esto según la estructura de tu usuario
-    }; 
+      size: videoEdit.size,
+      tipo: videoEdit.tipo,
+      url: videoEdit.url,
+      usuario_idusuario: userLocal.id,
+      words:palabras // Ajusta esto según la estructura de tu usuario
+    };
 
     try {
       const response = await fetch(`http://localhost/api/apiVideos.php?id=${videoEdit.idVideo}`, {
@@ -62,6 +66,18 @@ export const ModalEdit = ({ isVisible, onClose, nombre, descriptionVideo, video 
 
   if (!isVisible) return null;
 
+  const handleAddWord = () => {
+    if (newWord.trim() && !palabras.includes(newWord.trim())) {
+      setPalabras([...palabras, newWord.trim()]);
+      setNewWord('');
+
+    }
+  };
+
+  const handleDeleteWord = (wordToDelete) => {
+    setPalabras(palabras.filter(word => word !== wordToDelete));
+  };
+
   return (
     <div className="modal-overlay-edit">
       <div className="modal-content-edit">
@@ -77,9 +93,30 @@ export const ModalEdit = ({ isVisible, onClose, nombre, descriptionVideo, video 
             <input type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
           </label>
           <br />
+          <label>Palabras Clave:</label>
+            <div className="words-container">
+              {palabras.map((word, index) => (
+                <div key={index} className="word-card">
+                  <span>{word}</span>
+                  <button type='button' className="delete-button" onClick={() => handleDeleteWord(word)}>X</button>
+                </div>
+              ))}
+
+              <div className='add-word-container'>
+              <input
+                className="word-card input-word"
+                type="text"
+                  value={newWord}
+                  onChange={(e) => setNewWord(e.target.value)}
+                placeholder="Nueva palabra"
+              />
+              <button type='button' onClick={handleAddWord} className="word-card btn-add"> + Agregar </button>
+              </div>
+            </div>
+
           <div className='btns-modal-edit'>
-            <button type="submit">Guardar Cambios</button>
-            <button onClick={handleCloseModal}>Cerrar</button>
+            <button className='tarjeta-btn' type="submit">Guardar Cambios</button>
+            <button className='tarjeta-btn' onClick={handleCloseModal}>Cerrar</button>
           </div>
         </form>
 
