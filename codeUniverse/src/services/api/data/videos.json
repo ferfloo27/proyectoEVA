@@ -69,7 +69,7 @@
     {
         "idVideo": 6,
         "usuario_idusuario": 6,
-        "titulovideo": "Manejo de bucles en JavaScript",
+        "titulovideo": "Dominando Bucles en JavaScript: Guía Completa de For y While con Node.js",
         "descripcion": "se abordaran temas como los bucles for, while manejando node.js",
         "size": "10.27 MB",
         "tipo": "mp4",
@@ -77,8 +77,10 @@
         "words": [
             "for",
             "while",
-            "node", 
-            "javascript"
+            "node.js", 
+            "javascript",
+            "desarrollo",
+            "programación asincrona"
         ]
     },
     {

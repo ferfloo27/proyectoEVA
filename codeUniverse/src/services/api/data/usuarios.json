@@ -10,7 +10,9 @@
             {
                 "idVideo": 1,
                 "inscritos": [
-                    6
+                    6,
+                    4,
+                    5
                 ]
             },
             {
@@ -19,7 +21,9 @@
             },
             {
                 "idVideo": 7,
-                "inscritos": []
+                "inscritos": [
+                    3
+                ]
             },
             {
                 "idVideo": 8,
@@ -31,15 +35,35 @@
                 "idVideo": 6,
                 "apuntes": [
                     {
-                        "cue": "se\u00f1al prueba",
-                        "notes": "nota prueba",
-                        "summary": "javascript es un lenguaje "
+                        "cue": "prueba 3000",
+                        "notes": "otra prueba 3000",
+                        "summary": "el resumen se base sobre javascript",
+                        "observacionGeneral": "Regular.",
+                        "evaluacionDetallada": "El resumen es demasiado breve y no brinda suficiente informaci\u00f3n sobre el contenido del video. No menciona aspectos relevantes que podr\u00edan ser de inter\u00e9s para el espectador. Ser\u00eda recomendable ampliar y especificar m\u00e1s sobre el tema tratado en el video.",
+                        "puntaje": 50
                     }
-                ]
+                ],
+                "observaciones": []
             },
             {
                 "idVideo": 5,
-                "apuntes": []
+                "apuntes": [
+                    {
+                        "cue": "prueba spring",
+                        "notes": "ideas spring",
+                        "summary": "este contenido trata sobre lo basico de spring para backend",
+                        "observacionGeneral": "Regular.",
+                        "evaluacionDetallada": "El resumen es demasiado gen\u00e9rico y no proporciona suficiente informaci\u00f3n espec\u00edfica sobre el contenido del video. Ser\u00eda beneficioso incluir detalles m\u00e1s concretos sobre los conceptos b\u00e1sicos de spring para backend que se tratan en el video. Tambi\u00e9n se podr\u00eda mejorar la estructura y la claridad del resumen para hacerlo m\u00e1s atractivo y relevante para los espectadores interesados en el tema.",
+                        "puntaje": 50
+                    }
+                ],
+                "observaciones": [
+                    {
+                        "observacionIdeas": "te falta mucho ",
+                        "observacionNotas": "las ideas muy generales",
+                        "observacionResumen": "el resumen no se entiende mucho "
+                    }
+                ]
             }
         ]
     },
@@ -54,7 +78,8 @@
         "videosInscritos": [
             {
                 "idVideo": 6,
-                "apuntes": []
+                "apuntes": [],
+                "observaciones": []
             }
         ]
     },
@@ -76,10 +101,18 @@
             },
             {
                 "idVideo": 5,
-                "inscritos": []
+                "inscritos": [
+                    1
+                ]
             }
         ],
-        "videosInscritos": []
+        "videosInscritos": [
+            {
+                "idVideo": 7,
+                "apuntes": [],
+                "observaciones": []
+            }
+        ]
     },
     {
         "id": 4,
@@ -98,7 +131,13 @@
                         "notes": "for sintaxis :\nfor(let i=0; 0<n; i++){}",
                         "summary": "el bucle for ayuda a evitar el uso de if multiples"
                     }
-                ]
+                ],
+                "observaciones": []
+            },
+            {
+                "idVideo": 1,
+                "apuntes": [],
+                "observaciones": []
             }
         ]
     },
@@ -110,7 +149,28 @@
         "contrasena": "$2y$10$YlfBbXk.43Boa.ZOyr0GNehLbCw2UlPfASo.Eh.t20SoyElMquI5W",
         "rol": "estudiante",
         "videosSubidos": [],
-        "videosInscritos": []
+        "videosInscritos": [
+            {
+                "idVideo": 1,
+                "apuntes": [
+                    {
+                        "cue": "algunas ideas de sql",
+                        "notes": "algunas notas sobre sql",
+                        "summary": "el video explica conceptos basicos de java",
+                        "observacionGeneral": "Regular.",
+                        "evaluacionDetallada": "El resumen proporcionado es demasiado gen\u00e9rico y no brinda suficiente informaci\u00f3n espec\u00edfica sobre el contenido del video. Las ideas principales mencionadas parecen estar fuera de contexto, ya que no se relacionan claramente con el t\u00edtulo del video. Las notas sobre un tema no relacionado no aportan valor al contenido general. Ser\u00eda beneficioso mejorar la coherencia entre el t\u00edtulo, el resumen, las ideas principales y las notas para ofrecer una experiencia m\u00e1s consistente y relevante para el espectador.",
+                        "puntaje": 50
+                    }
+                ],
+                "observaciones": [
+                    {
+                        "observacionIdeas": "estos apuntes necesitan una mejora",
+                        "observacionNotas": "las notas un poco vacias",
+                        "observacionResumen": "el resumen muy generico prueba"
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": 6,
@@ -134,11 +194,15 @@
                 "idVideo": 1,
                 "apuntes": [
                     {
-                        "cue": "se\u00f1al 1",
-                        "notes": "notas de prueba",
-                        "summary": "un resumen corto"
+                        "cue": "ideas de preuba",
+                        "notes": "algo de notas ",
+                        "summary": "el video habla sobre temas basico de sql y para que sirven las BD",
+                        "observacionGeneral": "Regular.",
+                        "evaluacionDetallada": "El resumen proporciona informaci\u00f3n b\u00e1sica sobre los temas discutidos en el video, mencionando la importancia de las bases de datos y conceptos b\u00e1sicos de SQL. Sin embargo, ser\u00eda beneficioso incluir m\u00e1s detalles espec\u00edficos sobre lo que se aborda en el video para proporcionar una idea m\u00e1s clara de su contenido.",
+                        "puntaje": 65
                     }
-                ]
+                ],
+                "observaciones": []
             }
         ]
     }

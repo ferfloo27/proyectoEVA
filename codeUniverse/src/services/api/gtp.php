@@ -9,18 +9,20 @@ $dataFile = 'data/videos.json';
 // URL de la API de OpenAI
 $openaiApiUrl = 'https://api.openai.com/v1/chat/completions';
 // Clave API de OpenAI
-$openaiApiKey = 'AQUI LA APIKEY DE GPT';
+$openaiApiKey = 'aqui la api key';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input = json_decode(file_get_contents('php://input'), true);
 
-    if (!isset($input['idVideo']) || !isset($input['summary'])) {
-        echo json_encode(['message' => 'Datos insuficientes']);
-        exit();
-    }
+    if (!isset($input['idVideo']) || !isset($input['summary']) || !isset($input['cue']) || !isset($input['notes'])) {
+      echo json_encode(['message' => 'Datos insuficientes']);
+      exit();
+  }
 
     $idVideo = $input['idVideo'];
     $summary = $input['summary'];
+    $cue = $input['cue'];
+    $notes = $input['notes'];
 
     if (file_exists($dataFile)) {
         $data = json_decode(file_get_contents($dataFile), true);
@@ -28,11 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach ($data as $video) {
             if ($video['idVideo'] == $idVideo) {
                 $words = $video['words'] ?? [];
+                $title = $video['tiulovideo'] ?? 'Sin título';
 
                 // Obtener evaluación desde GPT
-                $gptEvaluation = getEvaluationFromGPT($summary, $words);
+                $gptEvaluation = getEvaluationFromGPT($summary,$cue,$notes, $words, $title);
 
-                $feedback = "Tu resumen ha sido evaluado con la siguiente respuesta: $gptEvaluation";
+                $feedback = "Tu resumen obtuvo la siguiente evaluación: $gptEvaluation";
 
                 echo json_encode(['message' => $feedback]);
                 exit();
@@ -46,20 +49,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Función para evaluar el resumen usando GPT
-function getEvaluationFromGPT($summary, $keywords) {
+function getEvaluationFromGPT($summary,$cue,$notes, $keywords, $title) {
     global $openaiApiUrl, $openaiApiKey;
 
-    // Prepara el mensaje para el modelo de chat
     $messages = [
-        ['role' => 'system', 'content' => 'Eres un asistente útil que evalúa la calidad de resúmenes en base a palabras clave.'],
-        ['role' => 'user', 'content' => "Evalúa el siguiente resumen en base a las palabras clave proporcionadas:\n\nResumen: $summary\n\nPalabras clave: " . implode(', ', $keywords) . "\n\n"]
-    ];
+      ['role' => 'system', 'content' => 'Eres un asistente que evalúa la calidad de resúmenes, ideas principales (cue) y notas en base a palabras clave y el título del video, proporcionando observaciones y una calificación de 1 a 100. No menciones las palabras clave explícitamente en la evaluación.'],
+      ['role' => 'user', 'content' => "Por favor, evalúa los siguientes aspectos considerando las palabras clave y el título del video proporcionados:\n\nTítulo: $title\n\nResumen: $summary\n\nIdeas Principales (cue): $cue\n\nNotas: $notes\n\nDebes proporcionar:\n1. Una observación general (muy buena, buena, regular, pésima) sobre la calidad del resumen, ideas principales y notas.\n2. Una evaluación detallada sin mencionar directamente las palabras clave.\n3. Una calificación de 1 a 100 en base a la calidad del resumen, ideas principales y notas."]
+  ];
 
     $postData = [
         'model' => 'gpt-3.5-turbo',
         'messages' => $messages,
-        'max_tokens' => 150, // Ajusta según tus necesidades
-        'temperature' => 0.7
+        'max_tokens' => 250, // Ajusta según tus necesidades
+        'temperature' => 0.8
     ];
 
     $ch = curl_init($openaiApiUrl);
@@ -80,6 +82,38 @@ function getEvaluationFromGPT($summary, $keywords) {
 
     curl_close($ch);
     $result = json_decode($response, true);
-    return $result['choices'][0]['message']['content'] ?? $response;
+
+    
+    $content = $result['choices'][0]['message']['content'] ?? '';
+    $evaluation = parseEvaluationResponse($content);
+
+    return json_encode($evaluation);
+}
+
+// Función para analizar la respuesta de GPT
+function parseEvaluationResponse($response) {
+  $evaluation = [
+      'observacionGeneral' => '',
+      'evaluacionDetallada' => '',
+      'puntaje' => 0
+  ];
+
+  // Define los patrones para cada sección de la evaluación
+  $patterns = [
+      'observacionGeneral' => '/Observación general:\s*(.*?)(?:\n|$)/',
+      'evaluacionDetallada' => '/Evaluación detallada:\s*(.*?)(?:\n|$)/',
+      'puntaje' => '/Calificación:\s*(\d+)/'
+  ];
+
+  foreach ($patterns as $key => $pattern) {
+      if (preg_match($pattern, $response, $matches)) {
+          $evaluation[$key] = trim($matches[1]);
+          if ($key === 'puntaje') {
+              $evaluation[$key] = (int)$evaluation[$key];
+          }
+      }
+  }
+
+  return $evaluation;
 }
 ?>
