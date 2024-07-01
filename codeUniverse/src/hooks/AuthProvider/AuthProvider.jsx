@@ -150,7 +150,7 @@ export const AuthProvider = ({ children }) => {
       const updatedVideosInscritos = [...user.videosInscritos];
       const isVideoAlreadySubscribed = updatedVideosInscritos.some(video => video.idVideo === idVideo);
       if (!isVideoAlreadySubscribed) {
-        updatedVideosInscritos.push({ idVideo, apuntes: [] });
+        updatedVideosInscritos.push({ idVideo, apuntes: [], observaciones: [] });
       }
       const updatedUser = {
         ...user,

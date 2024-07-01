@@ -59,8 +59,8 @@ export function PanelApuntes() {
   };
 
 
-  const handleRevisar = (apunte) => {
-    setSelectedEst({ apuntes: apunte })
+  const handleRevisar = (obs,apunte) => {
+    setSelectedEst({observaciones:obs, apuntes: apunte })
     setInRevision(true)
   }
 
@@ -95,7 +95,7 @@ export function PanelApuntes() {
                             video.apuntes.length > 0 ?
                               (<div className='evaluate'>
                                 {video.apuntes.map((info, index) => (
-                                  <>
+                                  < >
                                     <div key={index} className={`res-test ${getScoreClass(info.puntaje)}`}>
                                       <a href='#!' onClick={() => handleContentClick(video.idVideo, info.observacionGeneral)} className='test test-obs'><strong>Observacion General : </strong> </a>
                                       <a href='#!' onClick={() => handleContentClick(video.idVideo, info.evaluacionDetallada)} className='test test-eva'><strong>Evaluacion:</strong>  </a>
@@ -106,7 +106,7 @@ export function PanelApuntes() {
                                     </div>
                                   </>
                                 ))}
-                                <button onClick={() => handleRevisar(video.apuntes)} className='btn-evaluate btn-apuntes tarjeta-btn'>
+                                <button onClick={() => handleRevisar(video.observaciones,video.apuntes)} className='btn-evaluate btn-apuntes tarjeta-btn'>
                                   Mejorar Apuntes
                                 </button>
                               </div>
@@ -130,7 +130,7 @@ export function PanelApuntes() {
             )}
             {inRevision &&
               (<article className='contenido-right'>
-                <PanelRevision isCorreccion={true} apuntes={selectedEst?.apuntes} />
+                <PanelRevision isCorreccion={true} obs={selectedEst?.observaciones} apuntes={selectedEst?.apuntes} />
               </article>)}
           </>
         )}

@@ -78,10 +78,10 @@ export function PanelMaestro() {
 
 
 
-  const handleRevisar = (estudiante, apunte) => {
-    setSelectedEst({ nombre: estudiante, apuntes: apunte })
+  const handleRevisar = (estudiante, obs, apunte, videoId, datosEst) => {
+    setSelectedEst({ nombre: estudiante, observaciones:obs, apuntes: apunte, estudiante: datosEst, idVideo: videoId })
     setInRevision(true)
-    console.log(apunte)
+    console.log(datosEst)
   }
 
   const handleEditar = (clase) => {
@@ -151,7 +151,7 @@ export function PanelMaestro() {
                                                 </div>
                                               </>
                                             ))}
-                                            <button onClick={() => handleRevisar(estudiante.nombre, videoN.apuntes)} className='btn-evaluate btn-apuntes tarjeta-btn'>
+                                            <button onClick={() => handleRevisar(estudiante.nombre,videoN.observaciones, videoN.apuntes, videoN.idVideo, estudiante)} className='btn-evaluate btn-apuntes tarjeta-btn'>
                                               Revisar Apuntes
                                             </button>
                                           </div>
@@ -186,7 +186,7 @@ export function PanelMaestro() {
             )}
             {inRevision &&
               (<article className='contenido-right'>
-                <PanelRevision isCorreccion={false} nombreEst={selectedEst?.nombre} apuntes={selectedEst?.apuntes} />
+                <PanelRevision idVideo={selectedEst?.idVideo} isCorreccion={false} obs={selectedEst?.observaciones} nombreEst={selectedEst?.nombre} estudiante={selectedEst?.estudiante} apuntes={selectedEst?.apuntes} />
               </article>)}
             <ModalEdit
               isVisible={isModalEdit}

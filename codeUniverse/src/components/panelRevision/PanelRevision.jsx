@@ -1,13 +1,77 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './PanelRevision.css'
 
-export function PanelRevision({ isCorreccion, nombreEst, apuntes }) {
+export function PanelRevision({ isCorreccion, nombreEst,obs, apuntes, estudiante, idVideo }) {
 
+  const userLocal = JSON.parse(localStorage.getItem('user'))
   const [observacionIdeas, setObservacionIdeas] = useState('')
   const [observacionNotas, setObservacionNotas] = useState('')
   const [observacionResumen, setObservacionResumen] = useState('')
   const est = nombreEst;
   const apuntesEst = apuntes;
+  const datosEst = estudiante
+  const obsUser = obs
+  
+
+  useEffect(() => {
+    if(obsUser.length > 0){
+    obsUser.map(observacion => (
+      setObservacionIdeas(observacion.observacionIdeas),
+      setObservacionNotas(observacion.observacionNotas),
+      setObservacionResumen(observacion.observacionResumen)
+    ))}else{
+      setObservacionIdeas('')
+      setObservacionNotas('')
+      setObservacionResumen('')
+    }
+  
+  },[obsUser])
+  const handleSaveObservaciones = async () => {
+    // Actualiza el localStorage
+    const updatedUser = {
+      ...datosEst,
+      videosInscritos: datosEst.videosInscritos.map(video =>
+        video.idVideo === idVideo
+          ? {
+            ...video,
+            observaciones: [{
+              observacionIdeas,
+              observacionNotas,
+              observacionResumen
+            }]
+          }
+          : video
+      )
+    };
+
+
+    try {
+      // Realiza la solicitud PUT
+      const response = await fetch('http://localhost/api/api.php', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(updatedUser),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.message === 'Usuario actualizado') {
+          setObservacionIdeas('')
+          setObservacionNotas('')
+          setObservacionResumen('')
+        } else {
+          console.error('Error al actualizar usuario:', data.error);
+        }
+      } else {
+        console.error('Error en la respuesta de la API:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error al realizar la solicitud:', error);
+    }
+  };
+
   return (
     <div className='cont-revisor'>
       {
@@ -30,7 +94,6 @@ export function PanelRevision({ isCorreccion, nombreEst, apuntes }) {
                 rows={2}
                 cols={40}
                 onChange={(e) => setObservacionIdeas(e.target.value)}
-
                 placeholder={est ? ('Ingrese las observaciones que tiene acerca de las Ideas') : ('El maestro todavia no hizo ninguna observación')}
                 disabled={isCorreccion}
               />
@@ -82,7 +145,7 @@ export function PanelRevision({ isCorreccion, nombreEst, apuntes }) {
         {est ? (
           <div className='btns-revision'>
             {/* <button className='tarjeta-btn'>Rechazar apuntes</button> */}
-            <button className='tarjeta-btn'>Enviar observaciones</button>
+            <button onClick={handleSaveObservaciones} className='tarjeta-btn'>Enviar observaciones</button>
           </div>
         ) : (
           <div className='btns-revision'>
