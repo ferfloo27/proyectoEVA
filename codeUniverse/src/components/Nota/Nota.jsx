@@ -12,11 +12,13 @@ export const Nota = ({ idVideo }) => {
   const userLocal = JSON.parse(localStorage.getItem('user')) || {};
   const [isModalVisible, setModalVisible] = useState(false);
   const [isModalSaveVisible, setIsModalSaveVisible] = useState(false);
+  const [isCargando, setIsCargando] = useState(false)
   const [isDisabled, setIsDisabled] = useState(true)
 
   const handleEvaluateNotes = async () => {
     try {
       // Evaluar el resumen
+      setIsCargando(true)
       const evaluationResponse = await fetch('http://localhost/api/gtp.php', {
         method: 'POST',
         headers: {
@@ -40,27 +42,28 @@ export const Nota = ({ idVideo }) => {
             setPuntaje(evaluation.puntaje || 0);
 
             // Actualiza el localStorage
-            const updatedUser = {
-              ...userLocal,
-              videosInscritos: userLocal.videosInscritos?.map(video =>
-                video.idVideo === idVideo
-                  ? {
-                    ...video,
-                    apuntes: [{
-                      cue: cueText,
-                      notes: notesText,
-                      summary: summaryText,
-                      observacionGeneral: evaluation.observacionGeneral,
-                      evaluacionDetallada: evaluation.evaluacionDetallada,
-                      puntaje: evaluation.puntaje
-                    }],
-                  }
-                  : video
-              ),
-            };
+            // const updatedUser = {
+            //   ...userLocal,
+            //   videosInscritos: userLocal.videosInscritos?.map(video =>
+            //     video.idVideo === idVideo
+            //       ? {
+            //         ...video,
+            //         apuntes: [{
+            //           cue: cueText,
+            //           notes: notesText,
+            //           summary: summaryText,
+            //           observacionGeneral: evaluation.observacionGeneral,
+            //           evaluacionDetallada: evaluation.evaluacionDetallada,
+            //           puntaje: evaluation.puntaje
+            //         }],
+            //       }
+            //       : video
+            //   ),
+            // };
 
-            localStorage.setItem('user', JSON.stringify(updatedUser));
-            setIsDisabled(false); // Habilita el botón Guardar
+            // localStorage.setItem('user', JSON.stringify(updatedUser));
+            setIsDisabled(false);
+            setIsCargando(false) // Habilita el botón Guardar
           }
         }
       } else {
@@ -211,13 +214,20 @@ export const Nota = ({ idVideo }) => {
         />
       </details>
 
+      <div className={`${isCargando ? 'loading-container' : 'no-visible'}`}>
+        <div className="spinner"></div>
+        <p>Cargando. . . </p>
+      </div>
+
       {observacionGeneral && (
         <div className="feedback">
-          <h3>Retroalimentación:</h3>
+          <h3>Resultados:</h3>
           <p><strong>Observación General:</strong> {observacionGeneral}</p>
           <p><strong>Evaluación Detallada:</strong> {evaluacionDetallada}</p>
-          <p><strong>Puntaje:</strong> {puntaje}</p>        </div>
+          <p><strong>Puntaje:</strong> {puntaje}</p>
+        </div>
       )}
+
       <div className='titulo-btn-notas'>
         <button className="tarjeta-btn" onClick={handleEvaluateNotes}>Evaluar</button>
         <button disabled={isDisabled} onClick={() => setIsModalSaveVisible(true)} className="tarjeta-btn" >Guardar</button>
@@ -228,6 +238,8 @@ export const Nota = ({ idVideo }) => {
         onClose={() => setModalVisible(false)}
         message="Notas guardadas correctamente"
       />
+
+
 
       <div className={`${isModalSaveVisible ? 'modal-overlay-edit ' : 'no-visible'}`}>
         <div className="modal-save-notes">

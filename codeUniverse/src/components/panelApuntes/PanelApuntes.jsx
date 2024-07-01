@@ -59,8 +59,8 @@ export function PanelApuntes() {
   };
 
 
-  const handleRevisar = (obs,apunte) => {
-    setSelectedEst({observaciones:obs, apuntes: apunte })
+  const handleRevisar = (obs,videoId,apunte) => {
+    setSelectedEst({observaciones:obs, idVideo: videoId, apuntes: apunte })
     setInRevision(true)
   }
 
@@ -106,7 +106,7 @@ export function PanelApuntes() {
                                     </div>
                                   </>
                                 ))}
-                                <button onClick={() => handleRevisar(video.observaciones,video.apuntes)} className='btn-evaluate btn-apuntes tarjeta-btn'>
+                                <button onClick={() => handleRevisar(video.observaciones,video.idVideo,video.apuntes)} className='btn-evaluate btn-apuntes tarjeta-btn'>
                                   Mejorar Apuntes
                                 </button>
                               </div>
@@ -130,7 +130,7 @@ export function PanelApuntes() {
             )}
             {inRevision &&
               (<article className='contenido-right'>
-                <PanelRevision isCorreccion={true} obs={selectedEst?.observaciones} apuntes={selectedEst?.apuntes} />
+                <PanelRevision isCorreccion={true} idVideo={selectedEst?.idVideo} obs={selectedEst?.observaciones} apuntes={selectedEst?.apuntes} />
               </article>)}
           </>
         )}
