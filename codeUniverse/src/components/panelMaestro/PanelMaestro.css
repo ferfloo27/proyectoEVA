@@ -9,6 +9,8 @@
   /* flex-wrap: wrap; */
   padding: 5em 6em;   
   min-height: 88.2vh;
+  /* background: linear-gradient(120deg, rgba(130,38,191,0.6) 90%, rgba(93,63,211,0.6) 100%); */
+  /* background-color: yellowgreen; */
 }
 
 .apuntes-content{
@@ -88,6 +90,7 @@ grid-area: titulo;
 .contenido-right{
   grid-area: right;
   width: 100%;
+  /* background: linear-gradient(120deg,  rgba(130,38,191,0.6) 90%, rgba(93,63,211,0.6) 100%); */
 }
 
 .contenido-article{
@@ -97,5 +100,6 @@ grid-area: titulo;
   /* border-bottom: 1px solid rgba(233, 174, 174); */
   border: 1px solid rgba(233, 174, 174);
   box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.2);
-
+  /* background-color: #fff; */
+  background: linear-gradient(120deg, rgba(130,38,191,0.6) 90%, rgba(93,63,211,0.6) 100%);
 }

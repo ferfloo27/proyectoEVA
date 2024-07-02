@@ -9,7 +9,7 @@ $dataFile = 'data/videos.json';
 // URL de la API de OpenAI
 $openaiApiUrl = 'https://api.openai.com/v1/chat/completions';
 // Clave API de OpenAI
-$openaiApiKey = 'aqui la api key';
+$openaiApiKey = 'aqui va la api key';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input = json_decode(file_get_contents('php://input'), true);
@@ -60,8 +60,8 @@ function getEvaluationFromGPT($summary,$cue,$notes, $keywords, $title) {
     $postData = [
         'model' => 'gpt-3.5-turbo',
         'messages' => $messages,
-        'max_tokens' => 250, // Ajusta según tus necesidades
-        'temperature' => 0.8
+        'max_tokens' => 150, // Ajusta según tus necesidades
+        'temperature' => 0.2
     ];
 
     $ch = curl_init($openaiApiUrl);

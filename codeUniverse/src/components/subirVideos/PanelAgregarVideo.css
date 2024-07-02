@@ -19,6 +19,7 @@
     box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.2);
     border: 1px solid rgb(0 0 0 /.2);
     align-items: center;
+    background: linear-gradient(90deg,  rgba(130,38,191,0.6) 0%, rgba(255,79,129,0.6) 100%);
 }
 
 .section1 {
@@ -54,6 +55,7 @@
     margin-bottom: 10px;
     border-radius: 5px;
 }
+
 
 .word-entry button {
     background-color: var(--color-danger);

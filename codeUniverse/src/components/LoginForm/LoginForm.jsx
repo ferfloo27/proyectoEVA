@@ -87,7 +87,7 @@ export const LoginForm = () => {
         {error && <p className="error-message">{error}</p>}
 
         <button className='btn-login'>Iniciar Sesión</button>
-        <div className="login-buttons">
+        {/* <div className="login-buttons">
           <button className="btn-red" >
             <div className='icono'>
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -124,7 +124,7 @@ export const LoginForm = () => {
               </svg>
             </div>
             Continuar con Facebook</button>
-        </div>
+        </div> */}
       </form>
       <Modal
         isVisible={isModalVisible}

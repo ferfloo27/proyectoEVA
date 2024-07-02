@@ -10,7 +10,8 @@
         "words": [
             "sql",
             "mysql",
-            "from"
+            "base de datos",
+            "BD"
         ]
     },
     {
@@ -77,7 +78,7 @@
         "words": [
             "for",
             "while",
-            "node.js", 
+            "node.js",
             "javascript",
             "desarrollo",
             "programación asincrona"
@@ -96,6 +97,20 @@
             "selectores",
             "flexbox",
             "grid"
+        ]
+    },
+    {
+        "idVideo": 8,
+        "usuario_idusuario": 1,
+        "titulovideo": "clase de introduccion a React",
+        "descripcion": "en este curso se veran conceptos como son los hooks y el manejo de estado",
+        "size": "661.05 KB",
+        "tipo": "mp4",
+        "url": "http://localhost/api/videos/6683faaa16f5d-1406-147169807_tiny.mp4",
+        "words": [
+            "react",
+            "useState",
+            "hook"
         ]
     }
 ]

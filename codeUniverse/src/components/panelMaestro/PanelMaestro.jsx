@@ -73,7 +73,6 @@ export function PanelMaestro() {
       ...prevState,
       [estudiante]: content,
     }));
-    console.log(contenidoActivo)
   };
 
 

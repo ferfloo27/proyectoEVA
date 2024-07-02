@@ -106,7 +106,7 @@ export const RegisterForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button className='btn-login' >Registrarse</button>
-        <div className="login-buttons">
+        {/* <div className="login-buttons">
           <button className="btn-red" >
             <div className='icono'>
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -143,7 +143,7 @@ export const RegisterForm = () => {
               </svg>
             </div>
             Continuar con Facebook</button>
-        </div>
+        </div> */}
       </form>
     </div>
   )

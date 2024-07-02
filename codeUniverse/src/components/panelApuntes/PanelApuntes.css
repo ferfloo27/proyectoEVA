@@ -27,7 +27,8 @@
 
 .res-test-content{
 height: 80px;
-width: 50%;
+  background-color: #fff;
+  width: 50%;
 }
 
 .low-score {

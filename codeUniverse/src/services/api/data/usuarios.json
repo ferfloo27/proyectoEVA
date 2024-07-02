@@ -6,6 +6,7 @@
         "nombreusuario": "midudev",
         "contrasena": "$2y$10$2wAylX.7xiR9rY3VdZuhBOu0m7FAmjQWjId5QCOpxlHRJIixF7C4S",
         "rol": "maestro",
+        "notificaciones": [],
         "videosSubidos": [
             {
                 "idVideo": 1,
@@ -17,7 +18,9 @@
             },
             {
                 "idVideo": 2,
-                "inscritos": []
+                "inscritos": [
+                    4
+                ]
             },
             {
                 "idVideo": 7,
@@ -35,12 +38,12 @@
                 "idVideo": 6,
                 "apuntes": [
                     {
-                        "cue": "prueba 3000",
-                        "notes": "otra prueba 3000",
-                        "summary": "el resumen se base sobre javascript",
+                        "cue": "node es para backend con javascript",
+                        "notes": "for y while son bueno para los bucles",
+                        "summary": "los bucles son de rpeubra",
                         "observacionGeneral": "Regular.",
-                        "evaluacionDetallada": "El resumen es demasiado breve y no brinda suficiente informaci\u00f3n sobre el contenido del video. No menciona aspectos relevantes que podr\u00edan ser de inter\u00e9s para el espectador. Ser\u00eda recomendable ampliar y especificar m\u00e1s sobre el tema tratado en el video.",
-                        "puntaje": 50
+                        "evaluacionDetallada": "El resumen es confuso y no transmite claramente la informaci\u00f3n relevante del video. Las ideas principales mencionadas son correctas, pero podr\u00edan ser m\u00e1s espec\u00edficas para reflejar mejor el contenido. Las notas son \u00fatiles al mencionar la utilidad de los bucles for y while, pero podr\u00edan ser m\u00e1s desarrolladas y detalladas.",
+                        "puntaje": 60
                     }
                 ],
                 "observaciones": []
@@ -49,12 +52,12 @@
                 "idVideo": 5,
                 "apuntes": [
                     {
-                        "cue": "prueba spring",
-                        "notes": "ideas spring",
-                        "summary": "este contenido trata sobre lo basico de spring para backend",
-                        "observacionGeneral": "Regular.",
-                        "evaluacionDetallada": "El resumen es demasiado gen\u00e9rico y no proporciona suficiente informaci\u00f3n espec\u00edfica sobre el contenido del video. Ser\u00eda beneficioso incluir detalles m\u00e1s concretos sobre los conceptos b\u00e1sicos de spring para backend que se tratan en el video. Tambi\u00e9n se podr\u00eda mejorar la estructura y la claridad del resumen para hacerlo m\u00e1s atractivo y relevante para los espectadores interesados en el tema.",
-                        "puntaje": 50
+                        "cue": "spring es un framework para backend",
+                        "notes": "Spring se maneja mediante Jav",
+                        "summary": "Spring junto con java son buenos para manejar el backend en desarrollo web, haciendo uso de sus aplicaciones como spring boot",
+                        "observacionGeneral": "Regular",
+                        "evaluacionDetallada": "El resumen proporciona una idea b\u00e1sica sobre el uso de Spring y Java en el desarrollo web, pero carece de detalles y profundidad. Las ideas principales son bastante simplistas y no proporcionan una visi\u00f3n completa del tema. Las notas son demasiado breves y no aportan informaci\u00f3n adicional significativa. Adem\u00e1s, el t\u00edtulo no est\u00e1 presente, lo que dificulta la comprensi\u00f3n del contexto completo del video.",
+                        "puntaje": 55
                     }
                 ],
                 "observaciones": [
@@ -74,6 +77,7 @@
         "nombreusuario": "pheralb",
         "contrasena": "$2y$10$tVztBe0oBUFciZWtVxXWtOhAF5Igz.D5odBuys7mdClg0yshgoLt.",
         "rol": "estudiante",
+        "notificaciones": [],
         "videosSubidos": [],
         "videosInscritos": [
             {
@@ -90,6 +94,10 @@
         "nombreusuario": "juan77",
         "contrasena": "$2y$10$vbHLyVjYleLwRcEepkYMAuAIRAaYMpt9Nh0OmnjtzoNKIkjottdj6",
         "rol": "maestro",
+        "notificaciones": [
+            "El estudiante: Miguel Angel Duran acaba de mejorar sus notas en el video: Curso de introducci\u00f3n a spring",
+            "El estudiante: Miguel Angel Duran acaba de agregar notas nuevas en el video: Curso de introducci\u00f3n a spring"
+        ],
         "videosSubidos": [
             {
                 "idVideo": 3,
@@ -121,6 +129,7 @@
         "nombreusuario": "ferfloo27",
         "contrasena": "$2y$10$rwgfUuyKQ.detHuDE.4S9usdQf8IgCIKQ8EO.ZH0ayBju.zNeCMJy",
         "rol": "estudiante",
+        "notificaciones": [],
         "videosSubidos": [],
         "videosInscritos": [
             {
@@ -138,6 +147,20 @@
                 "idVideo": 1,
                 "apuntes": [],
                 "observaciones": []
+            },
+            {
+                "idVideo": 2,
+                "apuntes": [
+                    {
+                        "cue": "como aplico logica a problemas de la vida",
+                        "notes": "es bueno comenzar con logica para luego programar sea facil",
+                        "summary": "la logica se practica con ejercicios constantes",
+                        "observacionGeneral": "Buena.",
+                        "evaluacionDetallada": "El resumen presenta de manera concisa la importancia de practicar la l\u00f3gica constantemente. Las ideas principales indican la aplicaci\u00f3n de la l\u00f3gica a problemas cotidianos, lo cual es relevante y atractivo. Las notas sugieren un enfoque progresivo al comenzar con la l\u00f3gica antes de abordar la programaci\u00f3n, lo cual es un buen consejo para los principiantes.",
+                        "puntaje": 85
+                    }
+                ],
+                "observaciones": []
             }
         ]
     },
@@ -148,25 +171,29 @@
         "nombreusuario": "cenia99",
         "contrasena": "$2y$10$YlfBbXk.43Boa.ZOyr0GNehLbCw2UlPfASo.Eh.t20SoyElMquI5W",
         "rol": "estudiante",
+        "notificaciones": [
+            "El maestro del curso: Clases grabadas de SQL acaba de revisar tus ultimos notas",
+            "El maestro del curso: Clases grabadas de SQL acaba de revisar tus ultimos notas"
+        ],
         "videosSubidos": [],
         "videosInscritos": [
             {
                 "idVideo": 1,
                 "apuntes": [
                     {
-                        "cue": "algunas ideas de sql",
+                        "cue": "sql es lo mejor para BD",
                         "notes": "algunas notas sobre sql",
-                        "summary": "el video explica conceptos basicos de java",
+                        "summary": "el video explica conceptos basicos de sql para empezar tu primer proyecto con BD",
                         "observacionGeneral": "Regular.",
-                        "evaluacionDetallada": "El resumen proporcionado es demasiado gen\u00e9rico y no brinda suficiente informaci\u00f3n espec\u00edfica sobre el contenido del video. Las ideas principales mencionadas parecen estar fuera de contexto, ya que no se relacionan claramente con el t\u00edtulo del video. Las notas sobre un tema no relacionado no aportan valor al contenido general. Ser\u00eda beneficioso mejorar la coherencia entre el t\u00edtulo, el resumen, las ideas principales y las notas para ofrecer una experiencia m\u00e1s consistente y relevante para el espectador.",
-                        "puntaje": 50
+                        "evaluacionDetallada": "El resumen proporciona una idea general sobre el contenido del video, mencionando que explica conceptos b\u00e1sicos de SQL para iniciar un proyecto con bases de datos. Las ideas principales se centran en resaltar la importancia de SQL para las bases de datos. Las notas mencionadas podr\u00edan ser m\u00e1s detalladas y espec\u00edficas para enriquecer el contenido.",
+                        "puntaje": 70
                     }
                 ],
                 "observaciones": [
                     {
-                        "observacionIdeas": "estos apuntes necesitan una mejora",
-                        "observacionNotas": "las notas un poco vacias",
-                        "observacionResumen": "el resumen muy generico prueba"
+                        "observacionIdeas": "comentarios de prueba",
+                        "observacionNotas": "ideas comentario de prueba",
+                        "observacionResumen": "pruebas resumen"
                     }
                 ]
             }
@@ -179,6 +206,7 @@
         "nombreusuario": "carlosp",
         "contrasena": "$2y$10$9U5eDdyhi2xhLe1wAuoWYu.BTkIcfx9QWwt9ZBcvlXkzUzb8BRbUe",
         "rol": "maestro",
+        "notificaciones": [],
         "videosSubidos": [
             {
                 "idVideo": 6,
@@ -194,16 +222,27 @@
                 "idVideo": 1,
                 "apuntes": [
                     {
-                        "cue": "ideas de preuba",
-                        "notes": "algo de notas ",
-                        "summary": "el video habla sobre temas basico de sql y para que sirven las BD",
-                        "observacionGeneral": "Regular.",
-                        "evaluacionDetallada": "El resumen proporciona informaci\u00f3n b\u00e1sica sobre los temas discutidos en el video, mencionando la importancia de las bases de datos y conceptos b\u00e1sicos de SQL. Sin embargo, ser\u00eda beneficioso incluir m\u00e1s detalles espec\u00edficos sobre lo que se aborda en el video para proporcionar una idea m\u00e1s clara de su contenido.",
-                        "puntaje": 65
+                        "cue": "ideas 777",
+                        "notes": "notas 777",
+                        "summary": "sql es bueno para BD",
+                        "observacionGeneral": "P\u00e9sima",
+                        "evaluacionDetallada": "El resumen proporcionado es extremadamente vago y no proporciona ninguna informaci\u00f3n sustancial sobre el contenido del video. No se menciona ning\u00fan detalle espec\u00edfico sobre por qu\u00e9 SQL es bueno para las bases de datos, ni se proporciona ninguna informaci\u00f3n adicional que pueda ser relevante para el tema. Las ideas principales y las notas son igualmente insuficientes, ya que no proporcionan ninguna informaci\u00f3n relevante o \u00fatil. En lugar de proporcionar ideas o notas significativas, simplemente se mencionan n\u00fameros arbitrarios, lo que no aporta valor ni contexto al resumen.",
+                        "puntaje": 10
                     }
                 ],
                 "observaciones": []
             }
         ]
+    },
+    {
+        "id": 7,
+        "nombre": "Mariana Martinez",
+        "correoelec": "marianaexample@gmail.com",
+        "nombreusuario": "mariana12",
+        "contrasena": "$2y$10$6qldlF4tfKJYaKRF4sEoGuTdoadGGD2pudm8m.2hXodVo9.usfGT2",
+        "rol": "maestro",
+        "notificaciones": [],
+        "videosSubidos": [],
+        "videosInscritos": []
     }
 ]

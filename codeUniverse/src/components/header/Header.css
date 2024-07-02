@@ -54,12 +54,17 @@
     border: none;
     padding: 5px 10px;
     width: 120px;
-
+    background-color: #5D3FD3;
+    color: #ffffff;
+    border: none;
+    
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.btn-login-header:hover {
+/* .btn-login-header:hover {
     border-bottom: 2px solid var(--color-uno);
-}
+} */
 
 .avatar-user {
     width: 40px;

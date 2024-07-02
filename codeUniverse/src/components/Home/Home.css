@@ -7,7 +7,9 @@
 .welcome-message {
     padding: 3em 10em;
     background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(24, 101, 242, 1) 82%);
+    background: linear-gradient(90deg, #020024 0%, #5D3FD3 30%, #FF4F81 120%);
+    /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(24, 101, 242, 1) 82%); */
+    
 }
 
 .welcome-message-sec{
@@ -79,7 +81,7 @@
     background: white;
     border-radius: 10px;
     border: 1px solid #ddd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     transition: transform 0.2s;
 }
