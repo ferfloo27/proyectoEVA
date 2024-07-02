@@ -8,6 +8,7 @@ import { AuthProvider } from "../hooks/AuthProvider/AuthProvider"
 import {PanelAgregarVideo} from '../components/subirVideos/PanelAgregarVideo'
 import {Panel} from '../pages/Panel/Panel'
 import { PanelMaestro } from "../components/panelMaestro/PanelMaestro"
+import { PanelApuntes } from "../components/panelApuntes/PanelApuntes"
 
 export const AppRouter = () =>{
   
@@ -16,6 +17,7 @@ export const AppRouter = () =>{
         <Routes>
             <Route path="/" element={<HomePage/>}/>
             <Route path="/panel" element={<Panel/>} />
+            <Route path="/panel-apuntes" element={<PanelApuntes/>}/>
             <Route path="/lista-cursos-es" element={<VistaEstudiantes/>}/>
             <Route path="/lista-cursos-ma" element={<VistaMaestro/>}/>
             <Route path="/login" element={<VistaLogin/>}/>

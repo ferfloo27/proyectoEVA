@@ -3,12 +3,13 @@ import { useState } from 'react';
 import { useAuth } from '../../hooks/AuthProvider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import { Modal } from '../Modal/Modal';
-
+import './LoginForm.css'
 
 export const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useAuth();
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   // const handleLogin =  (e) => {
@@ -38,25 +39,33 @@ export const LoginForm = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError('')
+    if (!username || !password) {
+      setError('Todos los campos son obligatorios.');
+      return;
+    }
     const loginData = { username, password };
     const success = await login(loginData);
     if (success) {
       console.log('Inicio de sesión exitoso!');
       setModalVisible(true);
-    setTimeout(() => setModalVisible(false), 3000)
+      setTimeout(() => setModalVisible(false), 3000)
       navigate('/panel')
+    } else {
+      setError('Nombre de usuario o contraseña incorrectos')
     }
   };
- 
+
 
   return (
     <div className='loginContainer'>
-      <form className="form-login"  onSubmit={handleLogin} >
+      <form className="form-login" onSubmit={handleLogin} >
         <img src={logo} alt="Imagen de bienvenida" className="login-logo" />
         <h1>Iniciar Sesión</h1>
 
         <label className='label-form' htmlFor="email">Nombre de Usuario:</label>
         <input
+          
           className='input input-username'
           type="username"
           id="username"
@@ -66,6 +75,7 @@ export const LoginForm = () => {
 
         <label className='label-form' htmlFor="password">Contraseña:</label>
         <input
+          
           className='input input-password'
           type="password"
           id="password"
@@ -73,8 +83,11 @@ export const LoginForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
+        {error && <p className="error-message">{error}</p>}
+
         <button className='btn-login'>Iniciar Sesión</button>
-        <div className="login-buttons">
+        {/* <div className="login-buttons">
           <button className="btn-red" >
             <div className='icono'>
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +124,7 @@ export const LoginForm = () => {
               </svg>
             </div>
             Continuar con Facebook</button>
-        </div>
+        </div> */}
       </form>
       <Modal
         isVisible={isModalVisible}

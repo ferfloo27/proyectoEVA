@@ -70,17 +70,16 @@ export const AuthProvider = ({ children }) => {
       });
 
       const data = await response.json();
-      if (response.ok) {
+      if (response.ok && data.user) {
         //setUser(data.user);
         localStorage.setItem('user', JSON.stringify(data.user)); // Guardar datos del usuario en localStorage
         return true;
       } else {
-        alert(data.message && 'Nombre de usuario o contraseña incorrectos.');
+        // alert(data.message && 'Error en el inicio de sesion')
         return false;
       }
     } catch (error) {
       console.error('Error en el inicio de sesión:', error);
-      alert('Error en el inicio de sesión.');
       return false;
     }
   };
@@ -151,7 +150,7 @@ export const AuthProvider = ({ children }) => {
       const updatedVideosInscritos = [...user.videosInscritos];
       const isVideoAlreadySubscribed = updatedVideosInscritos.some(video => video.idVideo === idVideo);
       if (!isVideoAlreadySubscribed) {
-        updatedVideosInscritos.push({ idVideo, apuntes: [] });
+        updatedVideosInscritos.push({ idVideo, apuntes: [], observaciones: [] });
       }
       const updatedUser = {
         ...user,

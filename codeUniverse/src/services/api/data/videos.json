@@ -10,7 +10,8 @@
         "words": [
             "sql",
             "mysql",
-            "from"
+            "base de datos",
+            "BD"
         ]
     },
     {
@@ -69,7 +70,7 @@
     {
         "idVideo": 6,
         "usuario_idusuario": 6,
-        "titulovideo": "Manejo de bucles en JavaScript",
+        "titulovideo": "Dominando Bucles en JavaScript: Guía Completa de For y While con Node.js",
         "descripcion": "se abordaran temas como los bucles for, while manejando node.js",
         "size": "10.27 MB",
         "tipo": "mp4",
@@ -77,8 +78,10 @@
         "words": [
             "for",
             "while",
-            "node", 
-            "javascript"
+            "node.js",
+            "javascript",
+            "desarrollo",
+            "programación asincrona"
         ]
     },
     {
@@ -94,6 +97,20 @@
             "selectores",
             "flexbox",
             "grid"
+        ]
+    },
+    {
+        "idVideo": 8,
+        "usuario_idusuario": 1,
+        "titulovideo": "clase de introduccion a React",
+        "descripcion": "en este curso se veran conceptos como son los hooks y el manejo de estado",
+        "size": "661.05 KB",
+        "tipo": "mp4",
+        "url": "http://localhost/api/videos/6683faaa16f5d-1406-147169807_tiny.mp4",
+        "words": [
+            "react",
+            "useState",
+            "hook"
         ]
     }
 ]

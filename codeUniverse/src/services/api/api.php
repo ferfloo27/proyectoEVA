@@ -76,6 +76,7 @@ function registerUser(&$data, $inputData)
     'nombreusuario' => $inputData['username'],
     'contrasena' => password_hash($inputData['password'], PASSWORD_DEFAULT), // Hashea la contraseña
     'rol' => $inputData['role'],
+    'notificaciones' => [],
     'videosSubidos' => [],
     'videosInscritos' => []
   ];

@@ -1,37 +1,59 @@
 .contenido-panel-maestro{
   display: grid;
-  gap: 30px;
-  grid-template-areas: 'left left left left  right right';
+  grid-template-areas: 'titulo titulo titulo titulo titulo' 
+                        'left left left right right' 
+                        'left left left right right' 
+                        'left left left right right' 
+                        'left left left right right'
+                        'left left left right right';
   /* flex-wrap: wrap; */
   padding: 5em 6em;   
   min-height: 88.2vh;
+  /* background: linear-gradient(120deg, rgba(130,38,191,0.6) 90%, rgba(93,63,211,0.6) 100%); */
+  /* background-color: yellowgreen; */
 }
 
 .apuntes-content{
-  display: flex;
-  gap: 10px;
-  width: 50rem;
+  display: block;
+  /* background-color: yellow; */
+  width: 60rem;
   flex-wrap: wrap;
   flex-direction: row;
 }
 
 .apuntes-est{
-  position: relative;
+  /* position: relative; */
+  display: flex ;
+  align-items: center;
+  gap: 5em;
   border: 1px solid rgba(0, 0,0, .5);
-  width: 300px;
-  height: 10rem;
-  padding: 10px 20px;
+  width: 85%;
+  margin-bottom: 10px;
+  padding: 5px 10px;
   border-radius: 5px;
   /* background-color: blueviolet; */
 }
 
 .btn-revisar{
-  position: absolute;
-  margin-left: 255px;
- 
+  /* position: absolute; */
   border: none;
-  border-radius: 0 5px;
+  height: 35px;
+  border-radius:5px;
   z-index: 1;
+}
+
+.res-test{
+  /* background-color: var(--color-danger); */
+  /* border: 1px solid rgb(0 0 0 /.5); */
+  border: 2px solid var(--color-danger);
+  border-radius: 5px;
+  display: flex;
+  gap: 10px;
+  padding: 5px;
+}
+
+.res-test p{
+  margin: 0;
 }
 
 .apuntes-parrafo{
@@ -52,9 +74,13 @@
   justify-content: space-between;
 }
 
+.subtit{
+grid-area: titulo;
+}
+
 .contenido-left{
   grid-area: left;
-  width: 100%;
+  width: 90%;
   margin-top: 0px;
   
   /* border: 1px solid rgba(233, 174, 174, 0.5); */
@@ -64,6 +90,7 @@
 .contenido-right{
   grid-area: right;
   width: 100%;
+  /* background: linear-gradient(120deg,  rgba(130,38,191,0.6) 90%, rgba(93,63,211,0.6) 100%); */
 }
 
 .contenido-article{
@@ -73,5 +100,6 @@
   /* border-bottom: 1px solid rgba(233, 174, 174); */
   border: 1px solid rgba(233, 174, 174);
   box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.2);
-
+  /* background-color: #fff; */
+  background: linear-gradient(120deg, rgba(130,38,191,0.6) 90%, rgba(93,63,211,0.6) 100%);
 }

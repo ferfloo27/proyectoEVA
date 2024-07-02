@@ -1,20 +1,85 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Nota.css';
 import { Modal } from '../Modal/Modal';
 
-export const Nota = ({ idVideo }) => {
+export const Nota = ({ idVideo, autorId,nombreVideo }) => {
   const [cueText, setCueText] = useState('');
   const [notesText, setNotesText] = useState('');
   const [summaryText, setSummaryText] = useState('');
-  const [feedback, setFeedback] = useState('');
+  const [observacionGeneral, setObservacionGeneral] = useState('');
+  const [evaluacionDetallada, setEvaluacionDetallada] = useState('');
+  const [puntaje, setPuntaje] = useState(0);
   const userLocal = JSON.parse(localStorage.getItem('user')) || {};
   const [isModalVisible, setModalVisible] = useState(false);
+  const [isModalSaveVisible, setIsModalSaveVisible] = useState(false);
+  const [isCargando, setIsCargando] = useState(false)
+  const [isDisabled, setIsDisabled] = useState(true)
+
+  const [usuarios, setUsuarios] = useState([])
+
+  useEffect(() => {
+    // const autorVideo = usuarios.filter(user => user.id === autorId);
+    //       const autorFiltrado = autorVideo[0]
+    //      console.log('filtrado',nombreVideo)
+    const fetchUsuarios = async () => {
+      try {
+        const response = await fetch('http://localhost/api/api.php');
+        if (response.ok) {
+          const data = await response.json();
+          setUsuarios(data);
+        } else {
+          console.error('Error en la respuesta de la API:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error al realizar la solicitud:', error);
+      }
+    };
+
+    fetchUsuarios();
+  }, []);
+
+  const handleEvaluateNotes = async () => {
+    try {
+      // Evaluar el resumen
+      setIsCargando(true)
+      const evaluationResponse = await fetch('http://localhost/api/gtp.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify({ idVideo, summary: summaryText, cue: cueText, notes: notesText }),
+      });
+
+      if (evaluationResponse.ok) {
+        const evaluationData = await evaluationResponse.json();
+        console.log('datos server', evaluationData)
+        // Procesa la respuesta del backend
+        if (evaluationData.message) {
+          // Extrae el JSON de la cadena de respuesta
+          const evaluationJSON = evaluationData.message.match(/{.*}/);
+          if (evaluationJSON) {
+            const evaluation = JSON.parse(evaluationJSON[0]);
+
+            setObservacionGeneral(evaluation.observacionGeneral || 'No disponible');
+            setEvaluacionDetallada(evaluation.evaluacionDetallada || 'No disponible');
+            setPuntaje(evaluation.puntaje || 0);
+            setIsDisabled(false);
+            setIsCargando(false) // Habilita el botón Guardar
+          }
+        }
+      } else {
+        console.error('Error en la evaluación:', evaluationResponse.statusText);
+      }
+    } catch (error) {
+      console.error('Error al realizar la solicitud:', error);
+    }
+  };
 
   const handleSaveNotes = async () => {
     // Actualiza el localStorage
     const updatedUser = {
       ...userLocal,
-      videosInscritos: userLocal.videosInscritos?.map(video =>
+      videosInscritos: userLocal.videosInscritos.map(video =>
         video.idVideo === idVideo
           ? {
             ...video,
@@ -22,30 +87,77 @@ export const Nota = ({ idVideo }) => {
               cue: cueText,
               notes: notesText,
               summary: summaryText,
-            }],
+              observacionGeneral,
+              evaluacionDetallada,
+              puntaje
+            }]
           }
           : video
-      ),
+      )
     };
 
     // Actualiza localStorage
     localStorage.setItem('user', JSON.stringify(updatedUser));
 
     try {
-      // Evaluar el resumen
-      const evaluationResponse = await fetch('http://localhost/api/gtp.php', {
-        method: 'POST',
+      // Realiza la solicitud PUT
+      const response = await fetch('http://localhost/api/api.php', {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: JSON.stringify({ idVideo, summary: summaryText }),
+        body: JSON.stringify(updatedUser),
       });
 
-      if (evaluationResponse.ok) {
-        const evaluationData = await evaluationResponse.json();
-        setFeedback(evaluationData.message); // Mostrar la retroalimentación
+      if (response.ok) {
+        const data = await response.json();
+        if (data.message === 'Usuario actualizado') {
+          setCueText('')
+          setNotesText('')
+          setSummaryText('')
+          setObservacionGeneral('')
+          setEvaluacionDetallada('')
+          setPuntaje(0)
+          setIsDisabled(true)
+          setModalVisible(true);
+          setIsModalSaveVisible(false)
+          setTimeout(() => setModalVisible(false), 3000);
+
+          //Actualizar notficaciones del maestro
+          const autorVideo = usuarios.filter(user => user.id === autorId);
+          const autorFiltrado = autorVideo[0]
+          const updatedAutor = {
+            ...autorFiltrado,
+            notificaciones: [...autorFiltrado.notificaciones, 'El estudiante: ' + userLocal.nombre + ' acaba de agregar notas nuevas en el video: ' + nombreVideo]
+          };
+
+          // console.log('autor', updatedAutor)
+          try {
+            const responseAutor = await fetch('http://localhost/api/api.php', {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(updatedAutor)
+            });
+
+            if (!responseAutor.ok) {
+              console.error('Error al actualizar el autor del curso');
+            } else {
+
+              // Actualiza el estado local de usuarios para reflejar el cambio
+              // setUsuarios(prevUsuarios =>
+              //   prevUsuarios.map(user => (user.id === autorId ? updatedAutor : user))
+              // );
+            }
+          } catch (error) {
+            console.error('Error al actualizar el autor del curso:', error);
+          }
+        } else {
+          console.error('Error al actualizar usuario:', data.error);
+        }
       } else {
-        console.error('Error en la evaluación:', evaluationResponse.statusText);
+        console.error('Error en la respuesta de la API:', response.statusText);
       }
     } catch (error) {
       console.error('Error al realizar la solicitud:', error);
@@ -101,45 +213,56 @@ export const Nota = ({ idVideo }) => {
       <details open className="note-section">
         <summary><h3>Ideas</h3></summary>
         <textarea
+          required
           value={cueText}
           onChange={(e) => setCueText(e.target.value)}
           placeholder="Añade las señales aquí (conceptos, preguntas clave)"
           rows={5}
-          cols={43}
+          cols={42}
         />
       </details>
 
-      <details className="note-section">
+      <details open className="note-section">
         <summary><h3>Notas</h3></summary>
         <textarea
+          required
           value={notesText}
           onChange={(e) => setNotesText(e.target.value)}
           placeholder="Añade las notas detalladas aquí"
           rows={10}
-          cols={43}
+          cols={42}
         />
       </details>
 
-      <details className="note-section">
+      <details open className="note-section">
         <summary><h3>Resumen</h3></summary>
         <textarea
+          required
           value={summaryText}
           onChange={(e) => setSummaryText(e.target.value)}
           placeholder="Añade un breve resumen aquí"
           rows={5}
-          cols={43}
+          cols={42}
         />
       </details>
 
-      {feedback && (
+      <div className={`${isCargando ? 'loading-container' : 'no-visible'}`}>
+        <div className="spinner"></div>
+        <p>Cargando. . . </p>
+      </div>
+
+      {observacionGeneral && (
         <div className="feedback">
-          <h3>Retroalimentación:</h3>
-          <p>{feedback}</p>
+          <h3>Resultados:</h3>
+          <p><strong>Observación General:</strong> {observacionGeneral}</p>
+          <p><strong>Evaluación Detallada:</strong> {evaluacionDetallada}</p>
+          <p><strong>Puntaje:</strong> {puntaje}</p>
         </div>
       )}
+
       <div className='titulo-btn-notas'>
-        <button disabled={false} className="tarjeta-btn" onClick={handleSaveNotes}>Guardar</button>
-        <button disabled={true} className="tarjeta-btn" >Evaluar</button>
+        <button className="tarjeta-btn" onClick={handleEvaluateNotes}>Evaluar</button>
+        <button disabled={isDisabled} onClick={() => setIsModalSaveVisible(true)} className="tarjeta-btn" >Guardar</button>
       </div>
 
       <Modal
@@ -147,6 +270,19 @@ export const Nota = ({ idVideo }) => {
         onClose={() => setModalVisible(false)}
         message="Notas guardadas correctamente"
       />
+
+
+
+      <div className={`${isModalSaveVisible ? 'modal-overlay-edit ' : 'no-visible'}`}>
+        <div className="modal-save-notes">
+          <h1>Esta seguro que desea guardar sus apuntes?</h1>
+          <h3>Si su puntaje obtenido no es el mejor, todavia puede mejorarlo</h3>
+          <div className='titulo-btn-notas btn-modal'>
+            <button onClick={handleSaveNotes} className='tarjeta-btn'>Guardar</button>
+            <button onClick={() => setIsModalSaveVisible(false)} className='tarjeta-btn'>Cancelar</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

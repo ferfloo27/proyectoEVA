@@ -6,30 +6,42 @@
 
 .contenido-tarjeta{
     background-color: var(--color-background-tarjeta);
-    padding: .7em;
-    width: 225px;
-    max-width: 225px;
-    height: 300px;
-    max-height: 300px;
-    border-radius: 5px;
-    border: 1px solid #f7f8fa;
+    width: 300px;
+    max-width: 300px;
+    border-radius: 10px;
+    /* border: 1px solid #ddd; */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
     
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    justify-content: space-around;
+    box-sizing: border-box;
 }
 
 .img-tarjeta{
     width: 100%;
-    height: auto;
-    filter: grayscale(100%);
-    
+    border-radius: 10px 10px 0 0;
+}
+
+.tarjeta-video{
+    width: 100%;
+}
+
+.tarjeta-datos{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    padding: 10px ;
 }
 
 .tarjeta-titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1em;
     font-weight: bold;
 
@@ -41,6 +53,7 @@
     -webkit-line-clamp: 2; 
     -webkit-box-orient: vertical;
     overflow: hidden;
+    color: #777;
     text-overflow: ellipsis;
 }
 
@@ -58,6 +71,13 @@
 }
 .tarjeta-btn:hover {
     background-color: #0c4ca6;
+}
+
+.tarjeta-btn:disabled{
+    background-color: #cccccc; 
+    color: #666666; 
+    cursor: not-allowed; 
+    opacity: 0.7; 
 }
 
 .btn-agregar{
