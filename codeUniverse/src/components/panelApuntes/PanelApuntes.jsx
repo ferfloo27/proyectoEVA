@@ -59,8 +59,11 @@ export function PanelApuntes() {
   };
 
 
-  const handleRevisar = (obs,videoId,apunte) => {
-    setSelectedEst({observaciones:obs, idVideo: videoId, apuntes: apunte })
+  const handleRevisar = (obs, videoId,idAutorVideo,videoTitulo, apunte) => {
+
+    const autorVideo = usuarios.filter(user => user.id ===idAutorVideo );
+    const autorFiltrado = autorVideo[0]
+    setSelectedEst({ observaciones: obs, idVideo: videoId,autor: autorFiltrado,videoTi:videoTitulo, apuntes: apunte })
     setInRevision(true)
   }
 
@@ -97,16 +100,28 @@ export function PanelApuntes() {
                                 {video.apuntes.map((info, index) => (
                                   < >
                                     <div key={index} className={`res-test ${getScoreClass(info.puntaje)}`}>
-                                      <a href='#!' onClick={() => handleContentClick(video.idVideo, info.observacionGeneral)} className='test test-obs'><strong>Observacion General : </strong> </a>
-                                      <a href='#!' onClick={() => handleContentClick(video.idVideo, info.evaluacionDetallada)} className='test test-eva'><strong>Evaluacion:</strong>  </a>
-                                      <a href='#!' onClick={() => handleContentClick(video.idVideo, info.puntaje)} className='test test-score'><strong>Calificación:</strong> </a>
+                                      <a
+                                        href='#!'
+                                        onClick={() => handleContentClick(video.idVideo, info.observacionGeneral)}
+                                        className='test test-obs'><strong>Observacion General: </strong>
+                                      </a>
+                                      <a
+                                        href='#!'
+                                        onClick={() => handleContentClick(video.idVideo, info.evaluacionDetallada)}
+                                        className='test test-eva'><strong>Evaluacion:</strong>
+                                      </a>
+                                      <a
+                                        href='#!'
+                                        onClick={() => handleContentClick(video.idVideo, info.puntaje)}
+                                        className='test test-score'><strong>Calificación:</strong>
+                                      </a>
                                     </div>
                                     <div className={`res-test res-test-content ${getScoreClass(info.puntaje)}`}>
                                       <p className='test-eva'>{contenidoActivo[video.idVideo]}</p>
                                     </div>
                                   </>
                                 ))}
-                                <button onClick={() => handleRevisar(video.observaciones,video.idVideo,video.apuntes)} className='btn-evaluate btn-apuntes tarjeta-btn'>
+                                <button onClick={() => handleRevisar(video.observaciones, video.idVideo,clase.usuario_idusuario, clase.titulovideo, video.apuntes)} className='btn-evaluate btn-apuntes tarjeta-btn'>
                                   Mejorar Apuntes
                                 </button>
                               </div>
@@ -130,7 +145,7 @@ export function PanelApuntes() {
             )}
             {inRevision &&
               (<article className='contenido-right'>
-                <PanelRevision isCorreccion={true} idVideo={selectedEst?.idVideo} obs={selectedEst?.observaciones} apuntes={selectedEst?.apuntes} />
+                <PanelRevision isCorreccion={true} autorVideo={selectedEst?.autor} idVideo={selectedEst?.idVideo} videoTitulo={selectedEst?.videoTi} obs={selectedEst?.observaciones} apuntes={selectedEst?.apuntes} />
               </article>)}
           </>
         )}

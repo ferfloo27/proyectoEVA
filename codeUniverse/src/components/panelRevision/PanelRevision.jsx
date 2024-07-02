@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './PanelRevision.css'
 import { Modal } from '../Modal/Modal';
 
-export function PanelRevision({ isCorreccion, nombreEst, obs, apuntes, estudiante, idVideo }) {
+export function PanelRevision({ isCorreccion, nombreEst, obs, apuntes, estudiante, autorVideo, idVideo, videoTitulo }) {
 
   const userLocal = JSON.parse(localStorage.getItem('user')) || {};
   const [cueText, setCueText] = useState('');
@@ -23,7 +23,7 @@ export function PanelRevision({ isCorreccion, nombreEst, obs, apuntes, estudiant
   const apuntesEst = apuntes;
   const datosEst = estudiante
   const obsUser = obs
-
+  const autor = autorVideo
 
   useEffect(() => {
     if (obsUser.length > 0) {
@@ -151,6 +151,36 @@ export function PanelRevision({ isCorreccion, nombreEst, obs, apuntes, estudiant
           setModalVisible(true);
           setIsModalSaveVisible(false)
           setTimeout(() => setModalVisible(false), 3000);
+
+          //Actualizar notficaciones del maestro
+          const updatedAutor = {
+            ...autor,
+            notificaciones: [...autor.notificaciones, 'El estudiante: ' + userLocal.nombre + ' acaba de mejorar sus notas en el video: ' + videoTitulo]
+          };
+
+          // console.log('autor', updatedAutor)
+          try {
+            const responseAutor = await fetch('http://localhost/api/api.php', {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(updatedAutor)
+            });
+
+            if (!responseAutor.ok) {
+              console.error('Error al actualizar el autor del curso');
+            } else {
+
+              // Actualiza el estado local de usuarios para reflejar el cambio
+              // setUsuarios(prevUsuarios =>
+              //   prevUsuarios.map(user => (user.id === autorId ? updatedAutor : user))
+              // );
+            }
+          } catch (error) {
+            console.error('Error al actualizar el autor del curso:', error);
+          }
+
         } else {
           console.error('Error al actualizar usuario:', data.error);
         }
@@ -160,12 +190,13 @@ export function PanelRevision({ isCorreccion, nombreEst, obs, apuntes, estudiant
     } catch (error) {
       console.error('Error al realizar la solicitud:', error);
     }
+
   };
 
   const handleSaveObservaciones = async () => {
-    // Actualiza el localStorage
     const updatedUser = {
       ...datosEst,
+      notificaciones: [...datosEst.notificaciones, 'El maestro del curso: ' + videoTitulo + ' acaba de revisar tus ultimos notas'],
       videosInscritos: datosEst.videosInscritos.map(video =>
         video.idVideo === idVideo
           ? {
@@ -174,7 +205,7 @@ export function PanelRevision({ isCorreccion, nombreEst, obs, apuntes, estudiant
               observacionIdeas,
               observacionNotas,
               observacionResumen
-            }]
+            }],
           }
           : video
       )

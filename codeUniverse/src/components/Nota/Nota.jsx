@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Nota.css';
 import { Modal } from '../Modal/Modal';
 
-export const Nota = ({ idVideo }) => {
+export const Nota = ({ idVideo, autorId,nombreVideo }) => {
   const [cueText, setCueText] = useState('');
   const [notesText, setNotesText] = useState('');
   const [summaryText, setSummaryText] = useState('');
@@ -14,6 +14,29 @@ export const Nota = ({ idVideo }) => {
   const [isModalSaveVisible, setIsModalSaveVisible] = useState(false);
   const [isCargando, setIsCargando] = useState(false)
   const [isDisabled, setIsDisabled] = useState(true)
+
+  const [usuarios, setUsuarios] = useState([])
+
+  useEffect(() => {
+    // const autorVideo = usuarios.filter(user => user.id === autorId);
+    //       const autorFiltrado = autorVideo[0]
+    //      console.log('filtrado',nombreVideo)
+    const fetchUsuarios = async () => {
+      try {
+        const response = await fetch('http://localhost/api/api.php');
+        if (response.ok) {
+          const data = await response.json();
+          setUsuarios(data);
+        } else {
+          console.error('Error en la respuesta de la API:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error al realizar la solicitud:', error);
+      }
+    };
+
+    fetchUsuarios();
+  }, []);
 
   const handleEvaluateNotes = async () => {
     try {
@@ -40,28 +63,6 @@ export const Nota = ({ idVideo }) => {
             setObservacionGeneral(evaluation.observacionGeneral || 'No disponible');
             setEvaluacionDetallada(evaluation.evaluacionDetallada || 'No disponible');
             setPuntaje(evaluation.puntaje || 0);
-
-            // Actualiza el localStorage
-            // const updatedUser = {
-            //   ...userLocal,
-            //   videosInscritos: userLocal.videosInscritos?.map(video =>
-            //     video.idVideo === idVideo
-            //       ? {
-            //         ...video,
-            //         apuntes: [{
-            //           cue: cueText,
-            //           notes: notesText,
-            //           summary: summaryText,
-            //           observacionGeneral: evaluation.observacionGeneral,
-            //           evaluacionDetallada: evaluation.evaluacionDetallada,
-            //           puntaje: evaluation.puntaje
-            //         }],
-            //       }
-            //       : video
-            //   ),
-            // };
-
-            // localStorage.setItem('user', JSON.stringify(updatedUser));
             setIsDisabled(false);
             setIsCargando(false) // Habilita el botón Guardar
           }
@@ -121,6 +122,37 @@ export const Nota = ({ idVideo }) => {
           setModalVisible(true);
           setIsModalSaveVisible(false)
           setTimeout(() => setModalVisible(false), 3000);
+
+          //Actualizar notficaciones del maestro
+          const autorVideo = usuarios.filter(user => user.id === autorId);
+          const autorFiltrado = autorVideo[0]
+          const updatedAutor = {
+            ...autorFiltrado,
+            notificaciones: [...autorFiltrado.notificaciones, 'El estudiante: ' + userLocal.nombre + ' acaba de agregar notas nuevas en el video: ' + nombreVideo]
+          };
+
+          // console.log('autor', updatedAutor)
+          try {
+            const responseAutor = await fetch('http://localhost/api/api.php', {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(updatedAutor)
+            });
+
+            if (!responseAutor.ok) {
+              console.error('Error al actualizar el autor del curso');
+            } else {
+
+              // Actualiza el estado local de usuarios para reflejar el cambio
+              // setUsuarios(prevUsuarios =>
+              //   prevUsuarios.map(user => (user.id === autorId ? updatedAutor : user))
+              // );
+            }
+          } catch (error) {
+            console.error('Error al actualizar el autor del curso:', error);
+          }
         } else {
           console.error('Error al actualizar usuario:', data.error);
         }

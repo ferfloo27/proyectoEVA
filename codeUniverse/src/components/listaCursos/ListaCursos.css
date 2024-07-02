@@ -6,6 +6,7 @@
     flex-wrap: wrap;
     padding: 5em 10em;   
     min-height: 88.2vh;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(24, 101, 242, 1) 82%);
 }
 
 .seccion-clases{
@@ -22,5 +23,5 @@
 
 .titulo-clases{
     font-size: 30px;
-    color: #000;
+    color: #fff;
 }

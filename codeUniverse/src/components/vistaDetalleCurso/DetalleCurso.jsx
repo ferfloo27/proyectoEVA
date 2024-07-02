@@ -8,8 +8,7 @@ import { useLocation } from 'react-router-dom';
 
 export function DetalleCurso() {
   const location = useLocation();
-  const {idVideo} = location.state || {};
-
+  const {idVideo, idAutor,nombreClase} = location.state || {};
   const [videoData, setVideoData] = useState(null);
 
   useEffect(() => {
@@ -40,7 +39,7 @@ export function DetalleCurso() {
             <VideoPlayer url={url} />
           </div>
           <div className="notes-section">
-            <Nota idVideo={idVideo} />
+            <Nota idVideo={idVideo} autorId={idAutor} nombreVideo={nombreClase} />
           </div>
         
       </main>

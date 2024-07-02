@@ -78,8 +78,8 @@ export function PanelMaestro() {
 
 
 
-  const handleRevisar = (estudiante, obs, apunte, videoId, datosEst) => {
-    setSelectedEst({ nombre: estudiante, observaciones:obs, apuntes: apunte, estudiante: datosEst, idVideo: videoId })
+  const handleRevisar = (estudiante, obs, apunte, videoId,videoTitulo, datosEst) => {
+    setSelectedEst({ nombre: estudiante, observaciones: obs, apuntes: apunte, estudiante: datosEst, videoTi:videoTitulo, idVideo: videoId })
     setInRevision(true)
     console.log(datosEst)
   }
@@ -142,16 +142,28 @@ export function PanelMaestro() {
                                             {videoN.apuntes.map((info, index) => (
                                               <>
                                                 <div key={index} className={`res-test ${getScoreClass(info.puntaje)}`}>
-                                                  <a href='#!' onClick={() => handleContentClick(estudiante.id, info.observacionGeneral)} className='test test-obs'><strong>Observacion General : </strong> </a>
-                                                  <a href='#!' onClick={() => handleContentClick(estudiante.id, info.evaluacionDetallada)} className='test test-eva'><strong>Evaluacion:</strong>  </a>
-                                                  <a href='#!' onClick={() => handleContentClick(estudiante.id, info.puntaje)} className='test test-score'><strong>Calificación:</strong> </a>
+                                                  <a
+                                                    href='#!'
+                                                    onClick={() => handleContentClick(estudiante.id, info.observacionGeneral)}
+                                                    className='test test-obs'><strong>Observacion General:</strong>
+                                                  </a>
+                                                  <a
+                                                    href='#!'
+                                                    onClick={() => handleContentClick(estudiante.id, info.evaluacionDetallada)}
+                                                    className='test test-eva'><strong>Evaluacion:</strong>
+                                                  </a>
+                                                  <a
+                                                    href='#!'
+                                                    onClick={() => handleContentClick(estudiante.id, info.puntaje)}
+                                                    className='test test-score'><strong>Calificación:</strong>
+                                                  </a>
                                                 </div>
                                                 <div className={`res-test res-test-content ${getScoreClass(info.puntaje)}`}>
                                                   <p className='test-eva'>{contenidoActivo[estudiante.id]}</p>
                                                 </div>
                                               </>
                                             ))}
-                                            <button onClick={() => handleRevisar(estudiante.nombre,videoN.observaciones, videoN.apuntes, videoN.idVideo, estudiante)} className='btn-evaluate btn-apuntes tarjeta-btn'>
+                                            <button onClick={() => handleRevisar(estudiante.nombre, videoN.observaciones, videoN.apuntes, videoN.idVideo,clase.titulovideo, estudiante)} className='btn-evaluate btn-apuntes tarjeta-btn'>
                                               Revisar Apuntes
                                             </button>
                                           </div>
@@ -186,7 +198,7 @@ export function PanelMaestro() {
             )}
             {inRevision &&
               (<article className='contenido-right'>
-                <PanelRevision idVideo={selectedEst?.idVideo} isCorreccion={false} obs={selectedEst?.observaciones} nombreEst={selectedEst?.nombre} estudiante={selectedEst?.estudiante} apuntes={selectedEst?.apuntes} />
+                <PanelRevision idVideo={selectedEst?.idVideo} videoTitulo={selectedEst?.videoTi} isCorreccion={false} obs={selectedEst?.observaciones} nombreEst={selectedEst?.nombre} estudiante={selectedEst?.estudiante} apuntes={selectedEst?.apuntes} />
               </article>)}
             <ModalEdit
               isVisible={isModalEdit}
